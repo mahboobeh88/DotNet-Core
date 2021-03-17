@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiTesterV01</name>
+    </assembly>
+    <members>
+        <member name="M:ApiTesterV01.Controllers.CategoryController.Get">
+            <summary>
+            Get All Categories in DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CategoryController.Get(System.Int32,System.Boolean)">
+            <summary>
+            Get Category By Id or ProductId 
+            </summary>
+            <param name="id"></param>
+            <param name="byProduct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CategoryController.Post(ApiTesterV01.Models.CategoryViewModel)">
+            <summary>
+            insert New Category In DB
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CategoryController.Put(ApiTesterV01.Models.CategoryViewModel)">
+            <summary>
+            Update a category absolutly just Name
+            </summary>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CategoryController.Delete(System.Int32)">
+            <summary>
+            Delete a Category from DB
+            </summary>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CityController.Get">
+            <summary>
+            Get All Cities Exists In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CityController.Get(System.Int32)">
+            <summary>
+            Get City Info By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CityController.Post(ApiTesterV01.Models.CityViewModel)">
+            <summary>
+            Insert New City
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CityController.Put(ApiTesterV01.Models.CityViewModel)">
+            <summary>
+            Update a city Info 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CityController.Delete(System.Int32)">
+            <summary>
+            Delete a city 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.Get">
+            <summary>
+            Get All Discount In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.Get(System.Int32)">
+            <summary>
+            Get Discount By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.Get(System.String,System.String)">
+            <summary>
+            Get Discount By Start-End Date Filtering
+            </summary>
+            <param name="startDate"></param>
+            <param name="endDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.Post(ApiTesterV01.Models.DiscountViewModel)">
+            <summary>
+            Insert New Discount
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.Put(ApiTesterV01.Models.DiscountViewModel)">
+            <summary>
+            Update a Discount Info
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.Delete(System.Int32)">
+            <summary>
+            Delete a Discount From DB By id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UnitController.Get">
+            <summary>
+            Get All Units exist in DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UnitController.Get(System.Int32,System.Boolean)">
+            <summary>
+            Get Unit name by UnitId or which is assigned to a product by ProductId
+            </summary>
+            <param name="id"></param>
+            <param name="byProduct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UnitController.Post(ApiTesterV01.Models.UnitViewModel)">
+            <summary>
+            Submit a unit in DB
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UnitController.Put(ApiTesterV01.Models.UnitViewModel)">
+            <summary>
+            Update a unit (just Name) by UnitId 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UnitController.Delete(System.Int32)">
+            <summary>
+            Delete a Unit by UnitId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
