@@ -195,8 +195,7 @@ namespace ApiTesterV01.Data
                 .IsRequired()
                 .HasColumnType("nvarchar(150)");
             builder.Property(u => u.PasswordSalt)
-                .IsRequired()
-                .HasColumnType("nvarchar(150)");
+               .HasColumnType("nvarchar(150)");
             builder.Property(u => u.Status)
                 .HasColumnType("smallint")
                 .HasDefaultValue(0);

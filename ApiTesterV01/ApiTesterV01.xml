@@ -166,5 +166,42 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Get">
+            <summary>
+            Get All Users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Get(System.String,System.Boolean)">
+            <summary>
+            Get UserInfo By Id or UserName
+            </summary>
+            <param name="idOrUserName"></param>
+            <param name="byId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Post(ApiTesterV01.Models.UserViewModel)">
+            <summary>
+            Insert New User
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Put(ApiTesterV01.Models.UserViewModel,System.Boolean)">
+            <summary>
+            Update a UserInfo By Id Or By UserName
+            </summary>
+            <param name="model"></param>
+            <param name="byId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Delete(System.String,System.Boolean)">
+            <summary>
+            Delete a user By Id Or By UserName
+            </summary>
+            <param name="idOrUserName"></param>
+            <param name="byId"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

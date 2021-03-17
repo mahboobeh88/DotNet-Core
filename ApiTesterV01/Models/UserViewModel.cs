@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiTesterV01.Entities
+namespace ApiTesterV01.Models
 {
-    public class User
+    public class UserViewModel
     {
+        [Key]
         public Guid Id { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string? PasswordSalt { get; set; }
         public bool IsActive { get; set; }
         public Int16 Status { get; set; }
     }
