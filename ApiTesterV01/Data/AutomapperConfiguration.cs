@@ -46,6 +46,11 @@ namespace ApiTesterV01.Data
             CreateMap<User, UserViewModel>();
             CreateMap<UserViewModel, User>();
             #endregion
+
+            #region CompanyOwner
+            CreateMap<CompanyOwner, CompanyOwnerViewModel>();
+            CreateMap<CompanyOwnerViewModel, CompanyOwner>();
+            #endregion
         }
 
     }
