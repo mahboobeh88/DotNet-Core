@@ -111,6 +111,26 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.FactoryController.Get">
+            <summary>
+            Get All Factories In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.FactoryController.Post(ApiTesterV01.Models.FactoryViewModel)">
+            <summary>
+            Insert New Factory
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.FactoryController.Put(ApiTesterV01.Models.FactoryViewModel)">
+            <summary>
+            Update a factoryInfo 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiTesterV01.Controllers.UnitController.Get">
             <summary>
             Get All Units exist in DB

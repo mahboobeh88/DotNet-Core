@@ -33,6 +33,10 @@ namespace ApiTesterV01.Data
                 .ForMember(x => x.ShamsiStartDate, opt => { opt.PreCondition(x => x.StartDate != null); opt.MapFrom(x => x.StartDate.Value.ToShamsi()); })
                 .ForMember(x => x.ShamsiEndDate, opt => { opt.PreCondition(x => x.EndDate != null); opt.MapFrom(x => x.EndDate.Value.ToShamsi()); });
             #endregion
+            #region Factory
+            CreateMap<Factory, FactoryViewModel>();
+            CreateMap<FactoryViewModel, Factory>();
+            #endregion
         }
 
     }
