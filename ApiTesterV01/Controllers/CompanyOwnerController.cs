@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApiTesterV01.Controllers
 {
-  
+
     public class CompanyOwnerController : BaseController
     {
         private ICompanyOwnerServices _companyOwnerServices;
@@ -24,7 +24,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             var companyOwners = await _companyOwnerServices.GetAllAsync();
             return Ok(companyOwners);
@@ -33,21 +33,24 @@ namespace ApiTesterV01.Controllers
         /// Get CompanyOwner Info By Id or By CompanyId
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="byCompanyId"></param>
         /// <returns></returns>
-        [HttpGet("id/byCompanyId")]
-        public async Task<IActionResult> Get(int id , bool byCompanyId = false)
+        [HttpGet("id")]
+        public async Task<IActionResult> GetByCompanyOwnerId(int id)
         {
-            if(!byCompanyId)
-            {
-                var companyOwner = await _companyOwnerServices.GetCompanyOwnerByIdAsync(id);
-                return Ok(companyOwner);
-            }
-            else
-            {
-                var companyOwner = await _companyOwnerServices.GetCompanyOwnerByCompanyIdAsync(id);
-                return Ok(companyOwner);
-            }
+            var companyOwner = await _companyOwnerServices.GetCompanyOwnerByIdAsync(id);
+            return Ok(companyOwner);
+        }
+        /// <summary>
+        /// Get CompanyOwner Info By Id or By CompanyId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("id")]
+        public async Task<IActionResult> GetByCompanyId(int id)
+        {
+            var companyOwner = await _companyOwnerServices.GetCompanyOwnerByCompanyIdAsync(id);
+            return Ok(companyOwner);
+
         }
 
         #endregion

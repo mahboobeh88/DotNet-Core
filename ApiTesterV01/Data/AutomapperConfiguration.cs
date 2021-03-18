@@ -51,7 +51,14 @@ namespace ApiTesterV01.Data
             CreateMap<CompanyOwner, CompanyOwnerViewModel>()
                  .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToShamsi()));
             CreateMap<CompanyOwnerViewModel, CompanyOwner>()
-                 .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToMiladi())); 
+                 .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToMiladi()));
+            #endregion
+
+            #region Company
+            CreateMap<Company, CompanyViewModel>()
+                 .ForMember(x => x.RegisterDateTime, opt => opt.MapFrom(x => x.RegisterDateTime.ToShamsi()));
+            CreateMap<CompanyViewModel, Company>()
+                 .ForMember(x => x.RegisterDateTime, opt => opt.MapFrom(x => x.RegisterDateTime.ToMiladi()));
             #endregion
         }
 

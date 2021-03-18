@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApiTesterV01.Controllers
 {
-   
+
     public class UserController : BaseController
     {
         private IUserServices _userServices;
@@ -24,30 +24,34 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             var users = await _userServices.GetAllAsync();
             return Ok(users);
         }
         /// <summary>
-        /// Get UserInfo By Id or UserName
+        /// Get UserInfo By Id 
         /// </summary>
-        /// <param name="idOrUserName"></param>
-        /// <param name="byId"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
-        [HttpGet("idOrUserName/byId")]
-        public async Task<IActionResult> Get(string idOrUserName , bool byId=true)
+        [HttpGet("userId")]
+        public async Task<IActionResult> GetById(string userId)
         {
-            if(!byId)
-            {
-                var user = await _userServices.GetUserByUserNameAsync(idOrUserName.Trim());
+            var user = await _userServices.GetUserByIdAsync(userId.Trim());
+            return Ok(user);
+        }
+        /// <summary>
+        /// Get UserInfo By  UserName
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        [HttpGet("userName")]
+        public async Task<IActionResult> GetByUserName(string userName)
+        {
+           
+                var user = await _userServices.GetUserByUserNameAsync(userName.Trim());
                 return Ok(user);
-            }
-            else
-            {
-                var user = await _userServices.GetUserByIdAsync(idOrUserName.Trim());
-                return Ok(user);
-            }
+           
         }
         #endregion
 
@@ -72,9 +76,9 @@ namespace ApiTesterV01.Controllers
         /// <param name="byId"></param>
         /// <returns></returns>
         [HttpPut("byId")]
-        public async Task<IActionResult> Put(UserViewModel model , bool byId =false)
+        public async Task<IActionResult> Put(UserViewModel model, bool byId = false)
         {
-            if(!byId)
+            if (!byId)
             {
                 await _userServices.UpdateUserByUserNameAsync(model);
                 return Ok();
@@ -84,7 +88,7 @@ namespace ApiTesterV01.Controllers
                 await _userServices.UpdateUserByIdAsync(model);
                 return Ok();
             }
-            
+
         }
         #endregion
 
@@ -96,7 +100,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="byId"></param>
         /// <returns></returns>
         [HttpDelete("idOrUserName/byId")]
-        public async Task<IActionResult> Delete(string idOrUserName , bool byId=true)
+        public async Task<IActionResult> Delete(string idOrUserName, bool byId = true)
         {
             if (!byId)
             {
@@ -108,7 +112,7 @@ namespace ApiTesterV01.Controllers
                 await _userServices.DeleteUserByIdAsync(idOrUserName.Trim());
                 return Ok();
             }
-            
+
         }
         #endregion
 

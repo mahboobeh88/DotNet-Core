@@ -24,7 +24,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryServices.GetAllAsync();
             return Ok(categories);
@@ -34,21 +34,24 @@ namespace ApiTesterV01.Controllers
         /// Get Category By Id or ProductId 
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="byProduct"></param>
         /// <returns></returns>
-        [HttpGet("{id}, {byProduct}")]
-       public async Task<IActionResult> Get(int id , bool byProduct= false)
+        [HttpGet("id")]
+        public async Task<IActionResult> GetById(int id)
         {
-            if (!byProduct)
-            {
-                var category = await _categoryServices.GetCategoryAsync(id);
-                return Ok(category);
-            }
-            else
-            {
-                var category = await _categoryServices.GetCategoryByProductIdAsync(id);
-                return Ok(category);
-            }
+            var category = await _categoryServices.GetCategoryAsync(id);
+            return Ok(category);
+        }
+        /// <summary>
+        /// Get Category  ProductId 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        [HttpGet("productId")]
+        public async Task<IActionResult> GetByProductId(int productId)
+        {
+            var category = await _categoryServices.GetCategoryByProductIdAsync(productId);
+            return Ok(category);
+
         }
         #endregion
 
@@ -60,7 +63,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Post(CategoryViewModel model )
+        public async Task<IActionResult> Post(CategoryViewModel model)
         {
             await _categoryServices.AddNewAsync(model);
             return Ok();
@@ -85,7 +88,7 @@ namespace ApiTesterV01.Controllers
         /// Delete a Category from DB
         /// </summary>
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id )
+        public async Task<IActionResult> Delete(int id)
         {
             await _categoryServices.DeleteCategoryAsync(id);
             return Ok();

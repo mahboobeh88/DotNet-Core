@@ -27,32 +27,35 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             var units = await _unitServices.GetAllAsync();
             return Ok(units);
         }
 
         /// <summary>
-        /// Get Unit name by UnitId or which is assigned to a product by ProductId
+        /// Get Unit name by UnitId 
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="byProduct"></param>
         /// <returns></returns>
 
-        [HttpGet("{id},{byProduct}")]
-        public async Task<IActionResult> Get(int id, bool byProduct=false)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
         {
-            if (!byProduct)
-            {
-                var units = await _unitServices.GetUnitAsync(id);
-                return Ok(units);
-            }
-            else
-            {
-                var units = await _unitServices.GetCategoryByProductIdAsync(id);
-                return Ok(units);
-            }
+            var units = await _unitServices.GetUnitAsync(id);
+            return Ok(units);
+        }
+        /// <summary>
+        /// Get Unit name by ProductId
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> GetByProductId(int productId)
+        {
+            var units = await _unitServices.GetCategoryByProductIdAsync(productId);
+            return Ok(units);
         }
         #endregion
 

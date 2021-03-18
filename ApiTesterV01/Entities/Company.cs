@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace ApiTesterV01.Entities
         public string PhoneNumber { get; set; }
         public DateTime RegisterDateTime { get; set; }
         public short Status { get; set; }
+        [ForeignKey("CompanyOwner")]
         public long CompanyOwnerId { get; set; }
         public short CityId { get; set; }
         public virtual City City { get; set; }
