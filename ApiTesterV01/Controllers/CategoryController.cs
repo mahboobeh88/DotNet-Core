@@ -23,7 +23,7 @@ namespace ApiTesterV01.Controllers
         /// Get All Categories in DB
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("All/")]
         public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryServices.GetAllAsync();
@@ -35,7 +35,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var category = await _categoryServices.GetCategoryAsync(id);
@@ -46,7 +46,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpGet("productId")]
+        [HttpGet("ByProduct/{productId}")]
         public async Task<IActionResult> GetByProductId(int productId)
         {
             var category = await _categoryServices.GetCategoryByProductIdAsync(productId);
@@ -87,7 +87,7 @@ namespace ApiTesterV01.Controllers
         /// <summary>
         /// Delete a Category from DB
         /// </summary>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _categoryServices.DeleteCategoryAsync(id);

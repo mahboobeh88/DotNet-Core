@@ -26,7 +26,7 @@ namespace ApiTesterV01.Controllers
         /// Get All Units exist in DB
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("All/")]
         public async Task<IActionResult> GetAll()
         {
             var units = await _unitServices.GetAllAsync();
@@ -51,7 +51,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="productId"></param>
         /// <returns></returns>
 
-        [HttpGet("{productId}")]
+        [HttpGet("ByProduct/{productId}")]
         public async Task<IActionResult> GetByProductId(int productId)
         {
             var units = await _unitServices.GetCategoryByProductIdAsync(productId);

@@ -22,20 +22,20 @@ namespace ApiTesterV01.Controllers
         /// Get All Factories In DB
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("All/")]
         public async Task<IActionResult> GetAll()
         {
             var Factories = await _factoryServices.GetAllAsync();
             return Ok(Factories);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var factory = await _factoryServices.GetFactoryByIdAsync(id);
             return Ok(factory);
         }
-        [HttpGet("cityId")]
+        [HttpGet("ByCity/{cityId}")]
         public async Task<IActionResult> GetByCityId(int cityId)
         {
             var factories = await _factoryServices.GetAllByCityIdAsync(cityId);
@@ -72,7 +72,7 @@ namespace ApiTesterV01.Controllers
         #endregion
 
         #region Delete
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _factoryServices.DeleteFactoryByIdAsync(id);

@@ -23,7 +23,7 @@ namespace ApiTesterV01.Controllers
         /// Get All Cities Exists In DB
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("All/")]
         public async Task<IActionResult> GetAll()
         {
             var cities = await _cityServices.GetAllAsync();
@@ -80,7 +80,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id )
         {
             await _cityServices.DeleteCityAsync(id);

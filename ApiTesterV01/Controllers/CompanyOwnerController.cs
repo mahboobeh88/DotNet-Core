@@ -23,7 +23,7 @@ namespace ApiTesterV01.Controllers
         /// Get All CompanyOwners In DB
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("All/")]
         public async Task<IActionResult> GetAll()
         {
             var companyOwners = await _companyOwnerServices.GetAllAsync();
@@ -34,7 +34,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetByCompanyOwnerId(int id)
         {
             var companyOwner = await _companyOwnerServices.GetCompanyOwnerByIdAsync(id);
@@ -45,7 +45,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("ByCompanyId/{id}")]
         public async Task<IActionResult> GetByCompanyId(int id)
         {
             var companyOwner = await _companyOwnerServices.GetCompanyOwnerByCompanyIdAsync(id);
@@ -80,7 +80,7 @@ namespace ApiTesterV01.Controllers
         #endregion
 
         #region Delete
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _companyOwnerServices.DeleteCompanyOwnerByIdAsync(id);

@@ -23,7 +23,7 @@ namespace ApiTesterV01.Controllers
         /// Get All Users
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("All/")]
         public async Task<IActionResult> GetAll()
         {
             var users = await _userServices.GetAllAsync();
@@ -45,13 +45,13 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        [HttpGet("userName")]
+        [HttpGet("ByUserName/{userName}")]
         public async Task<IActionResult> GetByUserName(string userName)
         {
-           
-                var user = await _userServices.GetUserByUserNameAsync(userName.Trim());
-                return Ok(user);
-           
+
+            var user = await _userServices.GetUserByUserNameAsync(userName.Trim());
+            return Ok(user);
+
         }
         #endregion
 
@@ -70,49 +70,54 @@ namespace ApiTesterV01.Controllers
         #endregion
         #region Put
         /// <summary>
+        /// Update a UserInfo By UserName
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut("ByUserName/")]
+        public async Task<IActionResult> PutByUserName(UserViewModel model)
+        {
+            await _userServices.UpdateUserByUserNameAsync(model);
+            return Ok();
+
+        }
+        /// <summary>
         /// Update a UserInfo By Id Or By UserName
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="byId"></param>
         /// <returns></returns>
-        [HttpPut("byId")]
-        public async Task<IActionResult> Put(UserViewModel model, bool byId = false)
+        [HttpPut("ById/}")]
+        public async Task<IActionResult> Put(UserViewModel model)
         {
-            if (!byId)
-            {
-                await _userServices.UpdateUserByUserNameAsync(model);
-                return Ok();
-            }
-            else
-            {
-                await _userServices.UpdateUserByIdAsync(model);
-                return Ok();
-            }
-
+            await _userServices.UpdateUserByIdAsync(model);
+            return Ok();
         }
         #endregion
 
         #region Delete
         /// <summary>
-        /// Delete a user By Id Or By UserName
+        /// Delete a user By Id
         /// </summary>
-        /// <param name="idOrUserName"></param>
-        /// <param name="byId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("idOrUserName/byId")]
-        public async Task<IActionResult> Delete(string idOrUserName, bool byId = true)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteById(string id)
         {
-            if (!byId)
-            {
-                await _userServices.DeleteUserByUserNameAsync(idOrUserName.Trim());
-                return Ok();
-            }
-            else
-            {
-                await _userServices.DeleteUserByIdAsync(idOrUserName.Trim());
-                return Ok();
-            }
+            await _userServices.DeleteUserByIdAsync(id.Trim());
+            return Ok();
 
+        }
+        /// <summary>
+        /// Delete a user By UserName
+        /// </summary>
+        /// <param name="userNamde"></param>
+        /// <returns></returns>
+        [HttpDelete("ByUserName/{userNamde}")]
+        public async Task<IActionResult> Delete(string userNamde)
+        {
+
+            await _userServices.DeleteUserByUserNameAsync(userNamde.Trim());
+            return Ok();
         }
         #endregion
 

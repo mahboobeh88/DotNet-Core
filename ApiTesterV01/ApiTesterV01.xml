@@ -85,7 +85,7 @@
             <summary>
             Get All Companies By cityId
             </summary>
-            <param name="id"></param>
+            <param name="cityId"></param>
             <returns></returns>
         </member>
         <member name="M:ApiTesterV01.Controllers.CompanyController.GetByCompanyOwnerId(System.Int32)">
@@ -302,12 +302,18 @@
             <param name="byId"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.Delete(System.String,System.Boolean)">
+        <member name="M:ApiTesterV01.Controllers.UserController.DeleteById(System.String)">
             <summary>
-            Delete a user By Id Or By UserName
+            Delete a user By Id
             </summary>
-            <param name="idOrUserName"></param>
-            <param name="byId"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Delete(System.String)">
+            <summary>
+            Delete a user By UserName
+            </summary>
+            <param name="userNamde"></param>
             <returns></returns>
         </member>
     </members>
