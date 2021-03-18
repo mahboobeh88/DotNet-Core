@@ -60,6 +60,16 @@ namespace ApiTesterV01.Data
             CreateMap<CompanyViewModel, Company>()
                  .ForMember(x => x.RegisterDateTime, opt => opt.MapFrom(x => x.RegisterDateTime.ToMiladi()));
             #endregion
+
+            #region Company
+
+            CreateMap<Customer, CustomerViewModel>()
+                 .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToShamsi()))
+                 .ForMember(x => x.RegisterdateTime, opt => opt.MapFrom(x => x.RegisterdateTime.ToShamsi()));
+            CreateMap<CustomerViewModel, Customer>()
+                 .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToMiladi()))
+                 .ForMember(x => x.RegisterdateTime, opt => opt.MapFrom(x => x.RegisterdateTime.ToMiladi()));
+            #endregion
         }
 
     }

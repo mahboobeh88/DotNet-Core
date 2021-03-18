@@ -24,7 +24,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var companyOwners = await _companyOwnerServices.GetAllAsync();
             return Ok(companyOwners);
@@ -35,7 +35,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByCompanyOwnerId(int id)
+        public async Task<IActionResult> GetByOwnerIdAsync(int id)
         {
             var companyOwner = await _companyOwnerServices.GetCompanyOwnerByIdAsync(id);
             return Ok(companyOwner);
@@ -46,7 +46,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("ByCompanyId/{id}")]
-        public async Task<IActionResult> GetByCompanyId(int id)
+        public async Task<IActionResult> GetByCompanyIdAsync(int id)
         {
             var companyOwner = await _companyOwnerServices.GetCompanyOwnerByCompanyIdAsync(id);
             return Ok(companyOwner);

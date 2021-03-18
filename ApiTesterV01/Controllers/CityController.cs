@@ -24,7 +24,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var cities = await _cityServices.GetAllAsync();
             return Ok(cities);
@@ -36,7 +36,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var city = await _cityServices.GetCityAsync(id);
             return Ok(city);

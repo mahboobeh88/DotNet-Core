@@ -25,7 +25,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var discounts = await _discountServices.GetAllAsync();
             return Ok(discounts);
@@ -37,7 +37,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id )
+        public async Task<IActionResult> GetByIdAsync(int id )
         {
             var discounts = await _discountServices.GetDiscountByIdAsync(id);
             return Ok(discounts);
@@ -50,7 +50,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="endDate"></param>
         /// <returns></returns>
         [HttpGet("ByDate/{startDate,endDate}")]
-        public async Task<IActionResult> GetByDateFilter(string startDate=null , string endDate=null)
+        public async Task<IActionResult> GetByDateFilterAsync(string startDate=null , string endDate=null)
         {
             var discounts = await _discountServices.GetDiscountByDateAsync(startDate, endDate);
             return Ok(discounts);

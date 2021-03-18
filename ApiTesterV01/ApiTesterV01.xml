@@ -294,12 +294,18 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.Put(ApiTesterV01.Models.UserViewModel,System.Boolean)">
+        <member name="M:ApiTesterV01.Controllers.UserController.PutByUserName(ApiTesterV01.Models.UserViewModel)">
+            <summary>
+            Update a UserInfo By UserName
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.UserController.Put(ApiTesterV01.Models.UserViewModel)">
             <summary>
             Update a UserInfo By Id Or By UserName
             </summary>
             <param name="model"></param>
-            <param name="byId"></param>
             <returns></returns>
         </member>
         <member name="M:ApiTesterV01.Controllers.UserController.DeleteById(System.String)">

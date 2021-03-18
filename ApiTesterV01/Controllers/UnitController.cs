@@ -27,7 +27,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var units = await _unitServices.GetAllAsync();
             return Ok(units);
@@ -40,7 +40,7 @@ namespace ApiTesterV01.Controllers
         /// <returns></returns>
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var units = await _unitServices.GetUnitAsync(id);
             return Ok(units);
@@ -52,7 +52,7 @@ namespace ApiTesterV01.Controllers
         /// <returns></returns>
 
         [HttpGet("ByProduct/{productId}")]
-        public async Task<IActionResult> GetByProductId(int productId)
+        public async Task<IActionResult> GetByProductIdAsync(int productId)
         {
             var units = await _unitServices.GetCategoryByProductIdAsync(productId);
             return Ok(units);

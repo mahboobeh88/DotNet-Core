@@ -24,7 +24,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var users = await _userServices.GetAllAsync();
             return Ok(users);
@@ -35,7 +35,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpGet("userId")]
-        public async Task<IActionResult> GetById(string userId)
+        public async Task<IActionResult> GetByIdAsync(string userId)
         {
             var user = await _userServices.GetUserByIdAsync(userId.Trim());
             return Ok(user);
@@ -46,7 +46,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="userName"></param>
         /// <returns></returns>
         [HttpGet("ByUserName/{userName}")]
-        public async Task<IActionResult> GetByUserName(string userName)
+        public async Task<IActionResult> GetByUserNameAsync(string userName)
         {
 
             var user = await _userServices.GetUserByUserNameAsync(userName.Trim());
@@ -75,7 +75,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("ByUserName/")]
-        public async Task<IActionResult> PutByUserName(UserViewModel model)
+        public async Task<IActionResult> PutByUserNameAsync(UserViewModel model)
         {
             await _userServices.UpdateUserByUserNameAsync(model);
             return Ok();
@@ -101,7 +101,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteById(string id)
+        public async Task<IActionResult> DeleteByIdAsync(string id)
         {
             await _userServices.DeleteUserByIdAsync(id.Trim());
             return Ok();

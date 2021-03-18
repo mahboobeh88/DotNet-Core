@@ -24,7 +24,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var categories = await _categoryServices.GetAllAsync();
             return Ok(categories);
@@ -36,7 +36,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var category = await _categoryServices.GetCategoryAsync(id);
             return Ok(category);
@@ -47,7 +47,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="productId"></param>
         /// <returns></returns>
         [HttpGet("ByProduct/{productId}")]
-        public async Task<IActionResult> GetByProductId(int productId)
+        public async Task<IActionResult> GetByProductIdAsync(int productId)
         {
             var category = await _categoryServices.GetCategoryByProductIdAsync(productId);
             return Ok(category);

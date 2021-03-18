@@ -25,7 +25,7 @@ namespace ApiTesterV01.Controllers
         /// <returns></returns>
         [Route("All/")]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var companies = await _companyServices.GetAllAsync();
             return Ok(companies);
@@ -38,7 +38,7 @@ namespace ApiTesterV01.Controllers
 
         [HttpGet("ByCity/{cityId}")]
        
-        public async Task<IActionResult> GetByCityId(int cityId)
+        public async Task<IActionResult> GetByCityIdAsync(int cityId)
         {
             var companies = await _companyServices.GetAllByCityIdAsync(cityId);
             return Ok(companies);
@@ -50,7 +50,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("ByOwner/{id}")]
-        public async Task<IActionResult> GetByCompanyOwnerId(int id)
+        public async Task<IActionResult> GetByCompanyOwnerIdAsync(int id)
         {
             var companies = await _companyServices.GetAllByCompanyOwnerIdAsync(id);
             return Ok(companies);
@@ -61,7 +61,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var companies = await _companyServices.GetCompanyByIdAsync(id);
             return Ok(companies);
@@ -72,7 +72,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpGet("ByUser/{userid}")]
-        public async Task<IActionResult> GetByUserId(string userId)
+        public async Task<IActionResult> GetByUserIdAsync(string userId)
         {
             var companies = await _companyServices.GetAllByUserIdAsync(userId);
             return Ok(companies);
@@ -100,7 +100,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("ById/{id}")]
-        public async Task<IActionResult> DeleteById(int id)
+        public async Task<IActionResult> DeleteByIdAsync(int id)
         {
             await _companyServices.DeleteCompanyByIdAsync(id);
             return Ok();
@@ -110,8 +110,8 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="companyOwnerId"></param>
         /// <returns></returns>
-        [HttpDelete("ByCompanyOwnerId/{companyOwnerId}")]
-        public async Task<IActionResult> DeleteByCompanyOwnerId(int companyOwnerId)
+        [HttpDelete("ByOwnerId/{companyOwnerId}")]
+        public async Task<IActionResult> DeleteByCompanyOwnerIdAsync(int companyOwnerId)
         {
             await _companyServices.DeleteCompanyByCompanyOwnerIdAsync(companyOwnerId);
             return Ok();
@@ -122,7 +122,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpDelete("ByUserId/{userId}")]
-        public async Task<IActionResult> DeleteByUserId(string userId)
+        public async Task<IActionResult> DeleteByUserIdAsync(string userId)
         {
             await _companyServices.DeleteCompanyByUserIdAsync(userId);
             return Ok();

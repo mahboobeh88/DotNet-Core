@@ -23,20 +23,20 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("All/")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var Factories = await _factoryServices.GetAllAsync();
             return Ok(Factories);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var factory = await _factoryServices.GetFactoryByIdAsync(id);
             return Ok(factory);
         }
         [HttpGet("ByCity/{cityId}")]
-        public async Task<IActionResult> GetByCityId(int cityId)
+        public async Task<IActionResult> GetByCityIdAsync(int cityId)
         {
             var factories = await _factoryServices.GetAllByCityIdAsync(cityId);
             return Ok(factories);
