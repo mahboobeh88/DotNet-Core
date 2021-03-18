@@ -20,7 +20,7 @@ namespace ApiTesterV01.Models
         [MaxLength(11)]
         public string MobileNo { get; set; }
         [Required]
-        public DateTime BirthDate { get; set; }
+        public string BirthDate { get; set; }
         public short Status { get; set; }
         [Required]
         public Guid UserId { get; set; }

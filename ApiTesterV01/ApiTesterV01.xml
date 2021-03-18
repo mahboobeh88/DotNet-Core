@@ -69,6 +69,27 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.Get">
+            <summary>
+            Get All CompanyOwners In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.Get(System.Int32,System.Boolean)">
+            <summary>
+            Get CompanyOwner Info By Id or By CompanyId
+            </summary>
+            <param name="id"></param>
+            <param name="byCompanyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.Post(ApiTesterV01.Models.CompanyOwnerViewModel)">
+            <summary>
+            Insert New CompanyOwner
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiTesterV01.Controllers.DiscountController.Get">
             <summary>
             Get All Discount In DB

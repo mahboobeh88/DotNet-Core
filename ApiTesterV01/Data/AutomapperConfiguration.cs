@@ -17,12 +17,12 @@ namespace ApiTesterV01.Data
             CreateMap<Unit, UnitViewModel>();
             CreateMap<UnitViewModel, Unit>();
             #endregion
-           
+
             #region Category
             CreateMap<Category, CategoryViewModel>();
             CreateMap<CategoryViewModel, Category>();
             #endregion
-            
+
             #region City
             CreateMap<City, CityViewModel>();
             CreateMap<CityViewModel, City>();
@@ -36,7 +36,7 @@ namespace ApiTesterV01.Data
                 .ForMember(x => x.ShamsiStartDate, opt => { opt.PreCondition(x => x.StartDate != null); opt.MapFrom(x => x.StartDate.Value.ToShamsi()); })
                 .ForMember(x => x.ShamsiEndDate, opt => { opt.PreCondition(x => x.EndDate != null); opt.MapFrom(x => x.EndDate.Value.ToShamsi()); });
             #endregion
-            
+
             #region Factory
             CreateMap<Factory, FactoryViewModel>();
             CreateMap<FactoryViewModel, Factory>();
@@ -48,8 +48,10 @@ namespace ApiTesterV01.Data
             #endregion
 
             #region CompanyOwner
-            CreateMap<CompanyOwner, CompanyOwnerViewModel>();
-            CreateMap<CompanyOwnerViewModel, CompanyOwner>();
+            CreateMap<CompanyOwner, CompanyOwnerViewModel>()
+                 .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToShamsi()));
+            CreateMap<CompanyOwnerViewModel, CompanyOwner>()
+                 .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToMiladi())); 
             #endregion
         }
 
