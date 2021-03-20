@@ -61,7 +61,7 @@ namespace ApiTesterV01.Data
                  .ForMember(x => x.RegisterDateTime, opt => opt.MapFrom(x => x.RegisterDateTime.ToMiladi()));
             #endregion
 
-            #region Company
+            #region Customer
 
             CreateMap<Customer, CustomerViewModel>()
                  .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToShamsi()))
@@ -70,6 +70,25 @@ namespace ApiTesterV01.Data
                  .ForMember(x => x.BirthDate, opt => opt.MapFrom(x => x.BirthDate.ToMiladi()))
                  .ForMember(x => x.RegisterdateTime, opt => opt.MapFrom(x => x.RegisterdateTime.ToMiladi()));
             #endregion
+
+            #region Order
+
+            CreateMap<Order, OrderViewModel>()
+                 .ForMember(x => x.DeliveryDate, opt => { opt.PreCondition(x => x.DeliveryDate != null); opt.MapFrom(x => x.DeliveryDate.Value.ToShamsi()); })
+                  .ForMember(x => x.RefundDate, opt => { opt.PreCondition(x => x.RefundDate != null); opt.MapFrom(x => x.RefundDate.Value.ToShamsi()); })
+                  .ForMember(x => x.RegisterDateTime, opt => opt.MapFrom(x => x.RegisterDateTime.ToShamsi()));
+            CreateMap<OrderViewModel, Order>()
+                   .ForMember(x => x.DeliveryDate, opt => { opt.PreCondition(x => x.DeliveryDate.Trim() != string.Empty); opt.MapFrom(x => x.DeliveryDate.ToMiladi()); })
+                  .ForMember(x => x.RefundDate, opt => { opt.PreCondition(x => x.RefundDate.Trim() != string.Empty); opt.MapFrom(x => x.RefundDate.ToMiladi()); })
+                  .ForMember(x => x.RegisterDateTime, opt => opt.MapFrom(x => x.RegisterDateTime.ToMiladi()));
+            #endregion
+
+            #region OrderDetail 
+            CreateMap<OrderDetail, OrderDetailViewModel>();
+            CreateMap<OrderDetailViewModel, OrderDetail>();
+            #endregion
+
+
         }
 
     }

@@ -4,20 +4,20 @@
         <name>ApiTesterV01</name>
     </assembly>
     <members>
-        <member name="M:ApiTesterV01.Controllers.CategoryController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.CategoryController.GetAllAsync">
             <summary>
             Get All Categories in DB
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CategoryController.GetById(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CategoryController.GetByIdAsync(System.Int32)">
             <summary>
             Get Category By Id or ProductId 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CategoryController.GetByProductId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CategoryController.GetByProductIdAsync(System.Int32)">
             <summary>
             Get Category  ProductId 
             </summary>
@@ -41,13 +41,13 @@
             Delete a Category from DB
             </summary>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CityController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.CityController.GetAllAsync">
             <summary>
             Get All Cities Exists In DB
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CityController.GetById(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CityController.GetByIdAsync(System.Int32)">
             <summary>
             Get City Info By Id
             </summary>
@@ -75,34 +75,34 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.GetAllAsync">
             <summary>
             Get All Companies Exist In DB
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByCityId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByCityIdAsync(System.Int32)">
             <summary>
             Get All Companies By cityId
             </summary>
             <param name="cityId"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByCompanyOwnerId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByCompanyOwnerIdAsync(System.Int32)">
             <summary>
             Get All Companies By CompanyOwnerId
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.GetById(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByIdAsync(System.Int32)">
             <summary>
             Get company By CompanyId
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByUserId(System.String)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.GetByUserIdAsync(System.String)">
             <summary>
             Get all companies By UserId
             </summary>
@@ -116,41 +116,41 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteById(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteByIdAsync(System.Int32)">
             <summary>
             Delete Company By CompanyId
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteByCompanyOwnerId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteByCompanyOwnerIdAsync(System.Int32)">
             <summary>
             Delete All Companies Belong to a CompanyOwnerId
             </summary>
             <param name="companyOwnerId"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteByUserId(System.String)">
+        <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteByUserIdAsync(System.String)">
             <summary>
             Delete All Companies Belong to a UserId
             </summary>
             <param name="userId"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.GetAllAsync">
             <summary>
             Get All CompanyOwners In DB
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.GetByCompanyOwnerId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.GetByOwnerIdAsync(System.Int32)">
             <summary>
             Get CompanyOwner Info By Id or By CompanyId
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.GetByCompanyId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.CompanyOwnerController.GetByCompanyIdAsync(System.Int32)">
             <summary>
             Get CompanyOwner Info By Id or By CompanyId
             </summary>
@@ -164,20 +164,82 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.DiscountController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.CustomerController.GetAllAsync">
+            <summary>
+            Get All Customers Registered In APITester
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.GetCustomeByIdAsync(System.Int32)">
+            <summary>
+            Get Customer By CustomerId
+            </summary>
+            <param name="customerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.GetCustomeByUserIdAsync(System.String)">
+            <summary>
+            Get Customer By her/his UserId
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.GetCustomeByUserNameAsync(System.String)">
+            <summary>
+             Get Customer By her/his UserName
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.GetCustomeByNationalIdAsync(System.String)">
+            <summary>
+             Get Customer By her/his NationalId
+            </summary>
+            <param name="nationalId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.GetCustomeByCityIdAsync(System.Int32)">
+            <summary>
+             Get Customers By CityId
+            </summary>
+            <param name="cityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.Post(ApiTesterV01.Models.CustomerViewModel)">
+            <summary>
+            Register New Customer 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.Put(ApiTesterV01.Models.CustomerViewModel)">
+            <summary>
+            Update Customer Info By Customer Id
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.CustomerController.Delete(System.Int32)">
+            <summary>
+            Delete a customer By CustomerId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.DiscountController.GetAllAsync">
             <summary>
             Get All Discount In DB
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.DiscountController.GetById(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.DiscountController.GetByIdAsync(System.Int32)">
             <summary>
             Get Discount By Id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.DiscountController.GetByDateFilter(System.String,System.String)">
+        <member name="M:ApiTesterV01.Controllers.DiscountController.GetByDateFilterAsync(System.String,System.String)">
             <summary>
             Get Discount By Start-End Date Filtering
             </summary>
@@ -206,7 +268,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.FactoryController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.FactoryController.GetAllAsync">
             <summary>
             Get All Factories In DB
             </summary>
@@ -226,20 +288,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UnitController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.UnitController.GetAllAsync">
             <summary>
             Get All Units exist in DB
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UnitController.GetById(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.UnitController.GetByIdAsync(System.Int32)">
             <summary>
             Get Unit name by UnitId 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UnitController.GetByProductId(System.Int32)">
+        <member name="M:ApiTesterV01.Controllers.UnitController.GetByProductIdAsync(System.Int32)">
             <summary>
             Get Unit name by ProductId
             </summary>
@@ -267,20 +329,20 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.GetAll">
+        <member name="M:ApiTesterV01.Controllers.UserController.GetAllAsync">
             <summary>
             Get All Users
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.GetById(System.String)">
+        <member name="M:ApiTesterV01.Controllers.UserController.GetByIdAsync(System.String)">
             <summary>
             Get UserInfo By Id 
             </summary>
             <param name="userId"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.GetByUserName(System.String)">
+        <member name="M:ApiTesterV01.Controllers.UserController.GetByUserNameAsync(System.String)">
             <summary>
             Get UserInfo By  UserName
             </summary>
@@ -294,7 +356,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.PutByUserName(ApiTesterV01.Models.UserViewModel)">
+        <member name="M:ApiTesterV01.Controllers.UserController.PutByUserNameAsync(ApiTesterV01.Models.UserViewModel)">
             <summary>
             Update a UserInfo By UserName
             </summary>
@@ -308,7 +370,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ApiTesterV01.Controllers.UserController.DeleteById(System.String)">
+        <member name="M:ApiTesterV01.Controllers.UserController.DeleteByIdAsync(System.String)">
             <summary>
             Delete a user By Id
             </summary>

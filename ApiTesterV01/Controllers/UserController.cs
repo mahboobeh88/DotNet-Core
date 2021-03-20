@@ -86,7 +86,7 @@ namespace ApiTesterV01.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPut("ById/}")]
+        [HttpPut("ById/")]
         public async Task<IActionResult> Put(UserViewModel model)
         {
             await _userServices.UpdateUserByIdAsync(model);
@@ -120,7 +120,6 @@ namespace ApiTesterV01.Controllers
             return Ok();
         }
         #endregion
-
 
 
     }
