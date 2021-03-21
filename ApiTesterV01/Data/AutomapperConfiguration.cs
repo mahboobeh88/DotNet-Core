@@ -88,7 +88,6 @@ namespace ApiTesterV01.Data
             CreateMap<OrderDetailViewModel, OrderDetail>();
             #endregion
 
-
             #region Payment
 
             CreateMap<Payment, PaymentViewModel>()
@@ -99,9 +98,9 @@ namespace ApiTesterV01.Data
 
             #region Page
             CreateMap<Page, PageViewModel>()
-                .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (short)x.PageType));
+                .ForMember(x => x.PageType, opt => opt.MapFrom(x => (short)x.PageType));
             CreateMap<PageViewModel, Page>()
-                .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (PageType)x.PageType));
+                .ForMember(x => x.PageType, opt => opt.MapFrom(x => (PageType)x.PageType));
             #endregion
 
             #region SectionPage
@@ -111,7 +110,14 @@ namespace ApiTesterV01.Data
                 .ForMember(x => x.SectionType, opt => opt.MapFrom(x => (PageType)x.SectionType));
             #endregion
 
-
+            #region StoreHouse
+            CreateMap<StoreHouse, StoreHouseViewModel>()
+                 .ForMember(x => x.InventoryStartDateTime, opt => opt.MapFrom(x => x.InventoryStartDateTime.ToShamsi()))
+                 .ForMember(x => x.InventoryEndDateTime, opt => { opt.PreCondition(x => x.InventoryEndDateTime != null); opt.MapFrom(x => x.InventoryEndDateTime.Value.ToShamsi()); });
+            CreateMap<StoreHouseViewModel, StoreHouse>()
+                 .ForMember(x => x.InventoryStartDateTime, opt => opt.MapFrom(x => x.InventoryStartDateTime.ToMiladi()))
+                 .ForMember(x => x.InventoryEndDateTime, opt => { opt.PreCondition(x => x.InventoryEndDateTime != null); opt.MapFrom(x => (DateTime)x.InventoryEndDateTime.ToMiladi()); });
+            #endregion
         }
 
     }

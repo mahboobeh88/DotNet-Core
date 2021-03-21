@@ -9,10 +9,12 @@ namespace ApiTesterV01.Entities
     public class StoreHouse
     {
         public long Id { get; set; }
+        [ForeignKey("Product")]
         public long ProductId { get; set; }
         public int FirstInventory { get; set; }
         public DateTime InventoryStartDateTime { get; set; }
-        public DateTime  InventoryEndDateTime { get; set; }
+        public DateTime?  InventoryEndDateTime { get; set; }
+        [ForeignKey("Unit")]
         public short UnitId { get; set; }
         [ForeignKey("Company")]
         public long ComapnyId { get; set; }

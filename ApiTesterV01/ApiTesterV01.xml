@@ -398,6 +398,62 @@
             <param name="pageId"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.GetAllAsync">
+            <summary>
+            Get All StoreHouses In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.Get(System.Int32)">
+            <summary>
+            Get StoreHouse By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.GetByProductAsync(System.Int32,System.Int32)">
+            <summary>
+            Get entire StoreHouse By product Id for a company
+            </summary>
+            <param name="productId"></param>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.GetByCompanyAsync(System.Int32)">
+            <summary>
+            Get entire StoreHouse By CompanyId
+            </summary>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.Post(ApiTesterV01.Models.StoreHouseViewModel)">
+            <summary>
+            Add New StoreHouse
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.Put(ApiTesterV01.Models.StoreHouseViewModel)">
+            <summary>
+            Update a StoreHouse By Id
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.Delete(System.Int32)">
+            <summary>
+            Delete a StoreHouse By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.StoreHouseController.DeleteByCompanyAsync(System.Int32)">
+            <summary>
+            Delete StoreHouse Which belong to a Company
+            </summary>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiTesterV01.Controllers.UnitController.GetAllAsync">
             <summary>
             Get All Units exist in DB
