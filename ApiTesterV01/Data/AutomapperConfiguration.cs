@@ -97,6 +97,13 @@ namespace ApiTesterV01.Data
              .ForMember(x => x.PaymentDate, opt => { opt.PreCondition(x => x.PaymentDate.Trim() != string.Empty); opt.MapFrom(x => x.PaymentDate.ToMiladi()); });
             #endregion
 
+            #region Page
+            CreateMap<Page, PageViewModel>()
+                .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (int)x.PageType));
+            CreateMap<PageViewModel, Page>()
+                .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (PageType)x.PageType));
+            #endregion
+
 
         }
 

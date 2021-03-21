@@ -288,6 +288,61 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.GetAllAsync">
+            <summary>
+            Get All Pages In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.GetByCompanyAsync(System.Int32)">
+            <summary>
+            Get All Pages belong to a CompanyId
+            </summary>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.Get(System.Int32)">
+            <summary>
+            Get Page By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.GetByTypeIdAsync(System.Int32)">
+            <summary>
+            Get All Pages with a special PageTypeId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.Post(ApiTesterV01.Models.PageViewModel)">
+            <summary>
+            Add New Page 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.Put(ApiTesterV01.Models.PageViewModel)">
+            <summary>
+            Update a page By Id
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.Delete(System.Int32)">
+            <summary>
+            Delete a Page By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageController.DeleteByCompanyAsync(System.Int32)">
+            <summary>
+            Delete All Pages Belong to a Company
+            </summary>
+            <param name="companyId"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiTesterV01.Controllers.UnitController.GetAllAsync">
             <summary>
             Get All Units exist in DB
