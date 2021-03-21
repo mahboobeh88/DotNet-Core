@@ -384,5 +384,61 @@
             <param name="userNamde"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.GetAllAsync">
+            <summary>
+            Get All Payments
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.GetAsync(System.Int32)">
+            <summary>
+            Get Payment By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.GetByCustomerIdAsync(System.Int32)">
+            <summary>
+            Get Payment By Customer Id
+            </summary>
+            <param name="customerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.GetByDateAsync(System.String,System.String)">
+            <summary>
+            Get Payments By Date Filter
+            </summary>
+            <param name="firstDate"></param>
+            <param name="endDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.GetByOrderIdAsync(System.Int32)">
+            <summary>
+            Get Payment By OrderId
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.Post(ApiTesterV01.Models.PaymentViewModel)">
+            <summary>
+            Add New payment
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.Put(ApiTesterV01.Models.PaymentViewModel)">
+            <summary>
+            Update a payment 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Services.PaymentController.Delete(System.Int32)">
+            <summary>
+            Delete a payment By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

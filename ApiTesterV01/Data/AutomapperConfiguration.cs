@@ -89,6 +89,15 @@ namespace ApiTesterV01.Data
             #endregion
 
 
+            #region Payment
+
+            CreateMap<Payment, PaymentViewModel>()
+                 .ForMember(x => x.PaymentDate, opt => opt.MapFrom(x => x.PaymentDate.ToShamsi()));
+            CreateMap<PaymentViewModel, Payment>()
+             .ForMember(x => x.PaymentDate, opt => { opt.PreCondition(x => x.PaymentDate.Trim() != string.Empty); opt.MapFrom(x => x.PaymentDate.ToMiladi()); });
+            #endregion
+
+
         }
 
     }

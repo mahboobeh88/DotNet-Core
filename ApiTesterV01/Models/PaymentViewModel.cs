@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiTesterV01.Entities
+namespace ApiTesterV01.Models
 {
-    public class Payment
+    public class PaymentViewModel
     {
-        [Key]
         public long Id { get; set; }
+        [Required]
         public long CustomerId { get; set; }
-        [ForeignKey("Order")]
+        [Required]
         public long OrderId { get; set; }
+        [Required]
+        [MaxLength(30)]
         public string SourceCreditCard { get; set; }
+        [Required]
+        [MaxLength(30)]
         public string DestinationCreditCard { get; set; }
-        public DateTime PaymentDate { get; set; }
+        [StringLength(10)]
+        public string PaymentDate { get; set; }
         public short Status { get; set; }
+        [MaxLength(50)]
         public string RRN { get; set; }
         public decimal Price { get; set; }
-       public virtual Customer Customer { get; set; }
-        public virtual Order Order { get; set; }
     }
 }
