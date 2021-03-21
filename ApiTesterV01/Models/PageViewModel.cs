@@ -14,6 +14,6 @@ namespace ApiTesterV01.Models
         public long CompanyId { get; set; }
         [MaxLength(50)]
         public string PageName { get; set; }
-        public int PageType { get; set; }
+        public short PageType { get; set; }
     }
 }

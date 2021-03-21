@@ -99,9 +99,16 @@ namespace ApiTesterV01.Data
 
             #region Page
             CreateMap<Page, PageViewModel>()
-                .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (int)x.PageType));
+                .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (short)x.PageType));
             CreateMap<PageViewModel, Page>()
                 .ForMember(x=> x.PageType , opt => opt.MapFrom(x=> (PageType)x.PageType));
+            #endregion
+
+            #region SectionPage
+            CreateMap<SectionPage, SectionPageViewModel>()
+                .ForMember(x => x.SectionType, opt => opt.MapFrom(x => (short)x.SectionType));
+            CreateMap<SectionPageViewModel, SectionPage>()
+                .ForMember(x => x.SectionType, opt => opt.MapFrom(x => (PageType)x.SectionType));
             #endregion
 
 

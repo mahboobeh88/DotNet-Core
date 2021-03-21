@@ -343,6 +343,61 @@
             <param name="companyId"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.GetAllAsync">
+            <summary>
+            Get All Section Pages In DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.GetByPageIdAsync(System.Int32)">
+            <summary>
+            Get By PageId
+            </summary>
+            <param name="pageId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get By SectionPage Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.GetBySectionTypeAsync(System.Int16)">
+            <summary>
+            Get by SectionType
+            </summary>
+            <param name="sectionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.Post(ApiTesterV01.Models.SectionPageViewModel)">
+            <summary>
+            Add New Section Page
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.Put(ApiTesterV01.Models.SectionPageViewModel)">
+            <summary>
+            Update Section Page By Id
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.Delete(System.Int32)">
+            <summary>
+            Delete Section Page By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiTesterV01.Controllers.PageSectionController.DeleteByPageAsync(System.Int32)">
+            <summary>
+            Delete All Section Page belong to a PageId
+            </summary>
+            <param name="pageId"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiTesterV01.Controllers.UnitController.GetAllAsync">
             <summary>
             Get All Units exist in DB

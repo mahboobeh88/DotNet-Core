@@ -57,6 +57,7 @@ namespace ApiTesterV01
             services.AddScoped(typeof(IOrderDetailServices) , typeof(OrderDetailServices));
             services.AddScoped(typeof(IPaymentServices) , typeof(PaymentServices));
             services.AddScoped(typeof(IPageServices), typeof(PageServices));
+            services.AddScoped(typeof(ISectionPageServices) , typeof(SectionPageServices));
             #endregion
 
             services.AddControllers();

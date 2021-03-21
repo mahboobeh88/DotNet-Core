@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiTesterV01.Entities
+namespace ApiTesterV01.Models
 {
-    public class SectionPage
+    public class SectionPageViewModel
     {
+        [Key]
         public long Id { get; set; }
+        [MaxLength(50)]
         public string Title { get; set; }
-        public SectionType SectionType { get; set; }
-        [ForeignKey("Page")]
+        [Required]
+        public short SectionType { get; set; }
+        [Required]
         public long PageId { get; set; }
-        [ForeignKey ("Media")]
         public long? MediaId { get; set; }
+        [MaxLength(500)]
         public string ContentText { get; set; }
-        public virtual Page Page{ get; set; }
-        public virtual Media Media { get; set; }
-
-
     }
 }
