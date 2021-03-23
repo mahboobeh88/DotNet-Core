@@ -27,7 +27,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var cities = await _cityServices.GetAllAsync();
-            return Ok(cities);
+            if (cities.Count() >= 1) return Ok(cities);
+            return Ok();
         }
 
         /// <summary>
@@ -39,7 +40,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var city = await _cityServices.GetCityAsync(id);
-            return Ok(city);
+           if (city != null) return Ok(city);
+            return Ok();
         }
         #endregion
 

@@ -23,39 +23,45 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var odDetails = await _orderDetailServices.GetAllAsync();
-            return Ok(odDetails);
+            if(odDetails.Count() >= 1) return Ok(odDetails);
+            return Ok();
         }
         [HttpGet("ByCustomer/{customerId}")]
         public async Task<IActionResult> GetByCustomerIdAsync(int customerId)
         {
             var odDetails = await _orderDetailServices.GetByCustomerIdAsync(customerId);
-            return Ok(odDetails);
+            if (odDetails.Count() >= 1) return Ok(odDetails);
+            return Ok();
         }
         [HttpGet("ByFacory/{factoryId}")]
         public async Task<IActionResult> GetByFactoryIdAsync(int factoryId)
         {
             var odDetails = await _orderDetailServices.GetByFactoryIdAsync(factoryId);
-            return Ok(odDetails);
+            if (odDetails.Count() >= 1) return Ok(odDetails);
+            return Ok();
         }
         [HttpGet]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var odDetails = await _orderDetailServices.GetByIdAsync(id);
-            return Ok(odDetails);
+            var odDetail = await _orderDetailServices.GetByIdAsync(id);
+            if (odDetail!= null) return Ok(odDetail);
+            return Ok();
         }
 
         [HttpGet("ByOrder/{orderId}")]
         public async Task<IActionResult> GetByOrderIdAsync(int orderId)
         {
             var odDetails = await _orderDetailServices.GetByOrderIdAsync(orderId);
-            return Ok(odDetails);
+            if (odDetails.Count() >= 1) return Ok(odDetails);
+            return Ok();
         }
 
         [HttpGet("ByProduct/{productId}")]
         public async Task<IActionResult> GetByProductIdAsync(int productId)
         {
             var odDetails = await _orderDetailServices.GetByProductIdAsync(productId);
-            return Ok(odDetails);
+            if (odDetails.Count() >= 1) return Ok(odDetails);
+            return Ok();
         }
 
         #endregion

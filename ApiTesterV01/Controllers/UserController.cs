@@ -27,7 +27,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var users = await _userServices.GetAllAsync();
-            return Ok(users);
+            if (users.Count() >=1) return Ok(users);
+            return Ok();
         }
         /// <summary>
         /// Get UserInfo By Id 
@@ -38,7 +39,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByIdAsync(string userId)
         {
             var user = await _userServices.GetUserByIdAsync(userId.Trim());
-            return Ok(user);
+            if (user != null) return Ok(user);
+            return Ok();
         }
         /// <summary>
         /// Get UserInfo By  UserName
@@ -50,7 +52,16 @@ namespace ApiTesterV01.Controllers
         {
 
             var user = await _userServices.GetUserByUserNameAsync(userName.Trim());
-            return Ok(user);
+            if (user != null) return Ok(user);
+            return Ok();
+        }
+        [HttpGet("ByUsePass/{userName} , {password}")]
+        public async Task<IActionResult> GetByUsePassAsync(string userName , string password)
+        {
+
+            var user = await _userServices.GetUserByUserNamePasswordAsync(userName.Trim() , password);
+            if (user != null) return Ok(user);
+            return Ok();
 
         }
         #endregion

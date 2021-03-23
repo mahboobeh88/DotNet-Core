@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApiTesterV01.Controllers
 {
-   
+
     public class PageController : BaseController
     {
         private IPageServices _pageServices;
@@ -27,7 +27,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var pages = await _pageServices.GetAllAsync();
-            return Ok(pages);
+            if (pages.Count() >= 1) return Ok(pages);
+            return Ok();
         }
 
         /// <summary>
@@ -39,7 +40,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByCompanyAsync(int companyId)
         {
             var pages = await _pageServices.GetByCompanyIdAsync(companyId);
-            return Ok(pages);
+            if (pages.Count() >= 1) return Ok(pages);
+            return Ok();
         }
         /// <summary>
         /// Get Page By Id
@@ -50,7 +52,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var page = await _pageServices.GetByIdAsync(id);
-            return Ok(page);
+            if (page != null) return Ok(page);
+            return Ok();
         }
         /// <summary>
         /// Get All Pages with a special PageTypeId
@@ -61,7 +64,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByTypeIdAsync(int id)
         {
             var pages = await _pageServices.GetByPageTypeAsync(id);
-            return Ok(pages);
+            if (pages.Count() >= 1) return Ok(pages);
+            return Ok();
         }
         #endregion
 
@@ -100,7 +104,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async  Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _pageServices.DeletePageByIdAsync(id);
             return Ok();

@@ -26,20 +26,23 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var Factories = await _factoryServices.GetAllAsync();
-            return Ok(Factories);
+            if (Factories .Count() >= 1)return Ok(Factories);
+            return Ok();
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var factory = await _factoryServices.GetFactoryByIdAsync(id);
-            return Ok(factory);
+            if(factory != null) return Ok(factory);
+            return Ok();
         }
         [HttpGet("ByCity/{cityId}")]
         public async Task<IActionResult> GetByCityIdAsync(int cityId)
         {
             var factories = await _factoryServices.GetAllByCityIdAsync(cityId);
-            return Ok(factories);
+            if (factories.Count () >= 1) return Ok(factories);
+            return Ok();
         }
         #endregion
 

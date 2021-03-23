@@ -1,4 +1,5 @@
-﻿using ApiTesterV01.Data;
+﻿using ApiTesterV01.Common;
+using ApiTesterV01.Data;
 using ApiTesterV01.Entities;
 using ApiTesterV01.ISevices;
 using ApiTesterV01.Models;
@@ -15,10 +16,12 @@ namespace ApiTesterV01.Services
     {
         private readonly APITesterDBContext _context;
         private IMapper _mapper;
-        public UserServices(APITesterDBContext context, IMapper mapper)
+        private EncryptionUtility _encryption;
+        public UserServices(APITesterDBContext context, IMapper mapper , EncryptionUtility encryption)
         {
             _context = context;
             _mapper = mapper;
+            _encryption = encryption;
         }
 
         #region Gets : All , By Id , By UserName
@@ -40,13 +43,26 @@ namespace ApiTesterV01.Services
             var userModel = _mapper.Map<UserViewModel>(user);
             return userModel;
         }
+        public async Task<UserViewModel> GetUserByUserNamePasswordAsync(string userName , string password)
+        {
+            string hashPass = _encryption.Encription(password);
+            var user = await _context.User.Where(u => u.UserName.Trim() == userName.Trim()  && u.Password.Trim() == hashPass + u.PasswordSalt.ToString()).AsNoTracking().SingleOrDefaultAsync();
+            
+            var userModel = _mapper.Map<UserViewModel>(user);
+            return userModel;
+           
+        }
 
         #endregion
 
         #region Add
         public async Task AddNewAsync(UserViewModel model)
         {
+           
             var user = _mapper.Map<User>(model);
+            user.PasswordSalt = Guid.NewGuid();
+            //Make hash Password :
+            user.Password = _encryption.HashWithSalt(model.Password , user.PasswordSalt.ToString());
             await _context.AddAsync(user);
             await _context.SaveChangesAsync();
         }

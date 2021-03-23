@@ -27,7 +27,8 @@ namespace ApiTesterV01.Controllers
        public async Task<IActionResult> GetAllAsync()
         {
             var sPages = await _spageSerices.GetAllAsync();
-            return Ok(sPages);
+           if(sPages.Count() >= 1) return Ok(sPages);
+            return Ok();
         }
 
         /// <summary>
@@ -39,7 +40,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByPageIdAsync(int pageId)
         {
             var sPages = await _spageSerices.GetByPageIdAsync(pageId);
-            return Ok(sPages);
+            if (sPages.Count() >= 1) return Ok(sPages);
+            return Ok();
         }
         /// <summary>
         /// Get By SectionPage Id
@@ -50,7 +52,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var sPage = await _spageSerices.GetByPageIdAsync(id);
-            return Ok(sPage);
+            if (sPage!=null) return Ok(sPage);
+            return Ok();
         }
         /// <summary>
         /// Get by SectionType
@@ -61,7 +64,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetBySectionTypeAsync(short sectionType)
         {
             var sPage = await _spageSerices.GetBySectionTypeAsync(sectionType);
-            return Ok(sPage);
+            if (sPage != null) return Ok(sPage);
+            return Ok();
         }
         #endregion
 

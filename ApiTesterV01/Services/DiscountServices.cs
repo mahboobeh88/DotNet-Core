@@ -40,10 +40,30 @@ namespace ApiTesterV01.Services
         {
             try
             {
-                var discounts = await _context.Discount
-               .Where(s => _StartDate == null || s.StartDate ==null ||  s.StartDate >= (DateTime)_StartDate.ToMiladi())
-               .Where(e => _EndDate == null || e.EndDate==null || e.EndDate >= (DateTime)_EndDate.ToMiladi())
-               .ToListAsync();
+
+                List<Discount> discounts = new List<Discount>();
+
+                if (_StartDate != null && _EndDate != null)
+                    discounts = await _context.Discount
+                                .Where(s => s.StartDate == null || ((DateTime)_StartDate.ToMiladi() <= s.StartDate && (DateTime)_EndDate.ToMiladi() >= s.StartDate))
+                                .Where(e => e.EndDate == null || (e.EndDate <= (DateTime)_EndDate.ToMiladi() && e.EndDate >= (DateTime)_StartDate.ToMiladi()))
+                                .ToListAsync();
+
+                else if (_StartDate != null && _EndDate == null)
+
+                    discounts = await _context.Discount
+                               .Where(s => s.StartDate == null || s.StartDate >= (DateTime)_StartDate.ToMiladi())
+                                .Where(e => e.EndDate == null || e.EndDate >= (DateTime)_StartDate.ToMiladi())
+                                .ToListAsync();
+
+                else if (_StartDate == null && _EndDate != null)
+
+                    discounts = await _context.Discount
+                               .Where(s => s.StartDate == null || s.StartDate <= (DateTime)_EndDate.ToMiladi())
+                                .Where(e => e.EndDate == null || e.EndDate <= (DateTime)_EndDate.ToMiladi())
+                                .ToListAsync();
+                else
+                    discounts = await _context.Discount.ToListAsync();
 
                 var discountModel = _mapper.Map<IEnumerable<DiscountViewModel>>(discounts);
                 return discountModel;
@@ -72,7 +92,7 @@ namespace ApiTesterV01.Services
             discount.Name = model.Name;
             discount.Percent = model.Percent;
             discount.Price = model.Price;
-            discount.EndDate = (model.ShamsiEndDate.Trim() == string.Empty ? null :(DateTime)(model.ShamsiEndDate).ToMiladi());
+            discount.EndDate = (model.ShamsiEndDate.Trim() == string.Empty ? null : (DateTime)(model.ShamsiEndDate).ToMiladi());
             discount.StartDate = (model.ShamsiStartDate.Trim() == string.Empty ? null : (DateTime)(model.ShamsiStartDate).ToMiladi());
             await _context.SaveChangesAsync();
         }

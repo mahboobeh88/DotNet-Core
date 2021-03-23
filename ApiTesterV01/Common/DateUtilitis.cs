@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ApiTesterV01.Common
 {
-    public static  class Utilitis
+    public static  class DateUtilitis
     {
         public static DateTime ParseDate(string date)
         {
@@ -45,5 +47,6 @@ namespace ApiTesterV01.Common
             DateTime dt = new DateTime(year, month, day, pc);
             return dt;
         }
+       
     }
 }

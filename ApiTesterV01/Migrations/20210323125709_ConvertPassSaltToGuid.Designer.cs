@@ -4,14 +4,16 @@ using ApiTesterV01.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiTesterV01.Migrations
 {
     [DbContext(typeof(APITesterDBContext))]
-    partial class APITesterDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210323125709_ConvertPassSaltToGuid")]
+    partial class ConvertPassSaltToGuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,8 +145,7 @@ namespace ApiTesterV01.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("CompanyOwner");
                 });
@@ -200,8 +201,7 @@ namespace ApiTesterV01.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Customer");
                 });
@@ -702,9 +702,9 @@ namespace ApiTesterV01.Migrations
                         .HasForeignKey("CityId");
 
                     b.HasOne("ApiTesterV01.Entities.User", "User")
-                        .WithOne("companyOwner")
-                        .HasForeignKey("ApiTesterV01.Entities.CompanyOwner", "UserId")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("City");
@@ -721,9 +721,9 @@ namespace ApiTesterV01.Migrations
                         .IsRequired();
 
                     b.HasOne("ApiTesterV01.Entities.User", "User")
-                        .WithOne("customer")
-                        .HasForeignKey("ApiTesterV01.Entities.Customer", "UserId")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("City");
@@ -971,13 +971,6 @@ namespace ApiTesterV01.Migrations
                     b.Navigation("OrderDetail");
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("ApiTesterV01.Entities.User", b =>
-                {
-                    b.Navigation("companyOwner");
-
-                    b.Navigation("customer");
                 });
 #pragma warning restore 612, 618
         }

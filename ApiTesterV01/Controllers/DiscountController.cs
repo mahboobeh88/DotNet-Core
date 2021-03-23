@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ApiTesterV01.Controllers
 {
- 
+
     public class DiscountController : BaseController
     {
         private IDiscountServices _discountServices;
@@ -28,7 +28,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var discounts = await _discountServices.GetAllAsync();
-            return Ok(discounts);
+            if (discounts.Count() >= 1) return Ok(discounts);
+            return Ok();
         }
 
         /// <summary>
@@ -37,10 +38,11 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync(int id )
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var discounts = await _discountServices.GetDiscountByIdAsync(id);
-            return Ok(discounts);
+            var discount = await _discountServices.GetDiscountByIdAsync(id);
+            if (discount != null) return Ok(discount);
+            return Ok();
         }
 
         /// <summary>
@@ -49,11 +51,12 @@ namespace ApiTesterV01.Controllers
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns></returns>
-        [HttpGet("ByDate/{startDate,endDate}")]
-        public async Task<IActionResult> GetByDateFilterAsync(string startDate=null , string endDate=null)
+        [HttpGet("ByDate/")]
+        public async Task<IActionResult> GetByDateFilterAsync(string startDate , string endDate )
         {
             var discounts = await _discountServices.GetDiscountByDateAsync(startDate, endDate);
-            return Ok(discounts);
+            if (discounts.Count() >= 1) return Ok(discounts);
+            return Ok();
         }
 
 

@@ -61,6 +61,10 @@ namespace ApiTesterV01
             services.AddScoped(typeof(IStoreHouseServices) , typeof(StoreHouseServices));
             #endregion
 
+            #region Utilities
+            services.AddSingleton(typeof(EncryptionUtility));
+            #endregion
+
             services.AddControllers();
 
             #region Swagger

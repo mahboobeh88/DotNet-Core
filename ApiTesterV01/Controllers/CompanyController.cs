@@ -28,7 +28,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var companies = await _companyServices.GetAllAsync();
-            return Ok(companies);
+            if (companies.Count() >= 1) return Ok(companies);
+            return Ok();
         }
         /// <summary>
         /// Get All Companies By cityId
@@ -37,11 +38,12 @@ namespace ApiTesterV01.Controllers
         /// <returns></returns>
 
         [HttpGet("ByCity/{cityId}")]
-       
+
         public async Task<IActionResult> GetByCityIdAsync(int cityId)
         {
             var companies = await _companyServices.GetAllByCityIdAsync(cityId);
-            return Ok(companies);
+            if (companies.Count() >= 1) return Ok(companies);
+            return Ok();
         }
 
         /// <summary>
@@ -53,7 +55,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByCompanyOwnerIdAsync(int id)
         {
             var companies = await _companyServices.GetAllByCompanyOwnerIdAsync(id);
-            return Ok(companies);
+            if (companies.Count() >= 1) return Ok(companies);
+            return Ok();
         }
         /// <summary>
         /// Get company By CompanyId
@@ -63,8 +66,9 @@ namespace ApiTesterV01.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var companies = await _companyServices.GetCompanyByIdAsync(id);
-            return Ok(companies);
+            var company = await _companyServices.GetCompanyByIdAsync(id);
+            if (company != null) return Ok(company);
+            return Ok();
         }
         /// <summary>
         /// Get all companies By UserId
@@ -75,7 +79,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByUserIdAsync(string userId)
         {
             var companies = await _companyServices.GetAllByUserIdAsync(userId);
-            return Ok(companies);
+            if (companies.Count() >= 1) return Ok(companies);
+            return Ok();
         }
         #endregion
 

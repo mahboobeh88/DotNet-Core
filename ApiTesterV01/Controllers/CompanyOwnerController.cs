@@ -27,7 +27,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var companyOwners = await _companyOwnerServices.GetAllAsync();
-            return Ok(companyOwners);
+            if (companyOwners.Count() >= 1) return Ok(companyOwners);
+            return Ok();
         }
         /// <summary>
         /// Get CompanyOwner Info By Id or By CompanyId
@@ -38,7 +39,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByOwnerIdAsync(int id)
         {
             var companyOwner = await _companyOwnerServices.GetCompanyOwnerByIdAsync(id);
-            return Ok(companyOwner);
+            if (companyOwner != null) return Ok(companyOwner);
+            return Ok();
         }
         /// <summary>
         /// Get CompanyOwner Info By Id or By CompanyId
@@ -49,8 +51,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByCompanyIdAsync(int id)
         {
             var companyOwner = await _companyOwnerServices.GetCompanyOwnerByCompanyIdAsync(id);
-            return Ok(companyOwner);
-
+            if (companyOwner != null) return Ok(companyOwner);
+            return Ok();
         }
 
         #endregion

@@ -30,7 +30,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var units = await _unitServices.GetAllAsync();
-            return Ok(units);
+            if (units.Count() >= 1) return Ok(units);
+            return Ok();
         }
 
         /// <summary>
@@ -42,8 +43,9 @@ namespace ApiTesterV01.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var units = await _unitServices.GetUnitAsync(id);
-            return Ok(units);
+            var unit = await _unitServices.GetUnitAsync(id);
+            if (unit != null) return Ok(unit);
+            return Ok();
         }
         /// <summary>
         /// Get Unit name by ProductId
@@ -55,7 +57,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByProductIdAsync(int productId)
         {
             var units = await _unitServices.GetCategoryByProductIdAsync(productId);
-            return Ok(units);
+            if (units.Count() >= 1) return Ok(units);
+            return Ok();
         }
         #endregion
 

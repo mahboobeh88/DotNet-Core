@@ -11,6 +11,7 @@ namespace ApiTesterV01.ISevices
         Task<IEnumerable<UserViewModel>> GetAllAsync();
         Task<UserViewModel> GetUserByUserNameAsync(string userName);
         Task<UserViewModel> GetUserByIdAsync(string id);
+        Task<UserViewModel> GetUserByUserNamePasswordAsync(string userName, string password);
         Task AddNewAsync(UserViewModel model);
         Task UpdateUserByUserNameAsync(UserViewModel model);
         Task UpdateUserByIdAsync(UserViewModel model);

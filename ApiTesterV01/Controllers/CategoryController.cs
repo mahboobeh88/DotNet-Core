@@ -39,7 +39,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var category = await _categoryServices.GetCategoryAsync(id);
-            return Ok(category);
+           if (category != null) return Ok(category);
+            return Ok();
         }
         /// <summary>
         /// Get Category  ProductId 
@@ -50,7 +51,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByProductIdAsync(int productId)
         {
             var category = await _categoryServices.GetCategoryByProductIdAsync(productId);
-            return Ok(category);
+            if (category != null) return Ok(category);
+            return Ok();
 
         }
         #endregion

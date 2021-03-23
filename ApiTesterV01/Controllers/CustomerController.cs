@@ -12,7 +12,7 @@ namespace ApiTesterV01.Controllers
 
     public class CustomerController : BaseController
     {
-        
+
         private ICustomerServices _customerServices;
         public CustomerController(ICustomerServices customerServices)
         {
@@ -28,7 +28,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var customers = await _customerServices.GetAllAsync();
-            return Ok(customers);
+            if (customers.Count() >= 1) return Ok(customers);
+            return Ok();
         }
         /// <summary>
         /// Get Customer By CustomerId
@@ -39,7 +40,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetCustomeByIdAsync(int customerId)
         {
             var customer = await _customerServices.GetCustomerBydIdAsync(customerId);
-            return Ok(customer);
+            if (customer != null) return Ok(customer);
+            return Ok();
         }
         /// <summary>
         /// Get Customer By her/his UserId
@@ -50,7 +52,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetCustomeByUserIdAsync(string userId)
         {
             var customer = await _customerServices.GetCustomerByUserIdAsync(userId);
-            return Ok(customer);
+            if (customer != null) return Ok(customer);
+            return Ok();
         }
         /// <summary>
         ///  Get Customer By her/his UserName
@@ -61,7 +64,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetCustomeByUserNameAsync(string userName)
         {
             var customer = await _customerServices.GetCustomerByUserIdAsync(userName);
-            return Ok(customer);
+            if (customer != null) return Ok(customer);
+            return Ok();
         }
         /// <summary>
         ///  Get Customer By her/his NationalId
@@ -72,7 +76,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetCustomeByNationalIdAsync(string nationalId)
         {
             var customer = await _customerServices.GetCustomerByNationalIdAsync(nationalId);
-            return Ok(customer);
+            if (customer != null) return Ok(customer);
+            return Ok();
         }
         /// <summary>
         ///  Get Customers By CityId
@@ -82,8 +87,9 @@ namespace ApiTesterV01.Controllers
         [HttpGet("ByCity/{cityId}")]
         public async Task<IActionResult> GetCustomeByCityIdAsync(int cityId)
         {
-            var customer = await _customerServices.GetCustomerByCityIdAsync(cityId);
-            return Ok(customer);
+            var customers = await _customerServices.GetCustomerByCityIdAsync(cityId);
+            if (customers.Count() >= 1) return Ok(customers);
+            return Ok();
         }
         #endregion
 
@@ -128,7 +134,7 @@ namespace ApiTesterV01.Controllers
         }
         #endregion
 
-        
+
 
     }
 }

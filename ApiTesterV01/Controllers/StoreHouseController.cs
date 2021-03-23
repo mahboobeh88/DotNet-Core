@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApiTesterV01.Controllers
 {
-    
+
     public class StoreHouseController : BaseController
     {
         private IStoreHouseServices _storeHouseServices;
@@ -28,7 +28,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var sHouses = await _storeHouseServices.GetAllAsync();
-            return Ok(sHouses);
+            if (sHouses.Count() >= 1) return Ok(sHouses);
+            return Ok();
         }
         /// <summary>
         /// Get StoreHouse By Id
@@ -39,7 +40,8 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var sHouse = await _storeHouseServices.GetByIdAsync(id);
-            return Ok(sHouse);
+            if (sHouse != null) return Ok(sHouse);
+            return Ok();
         }
         /// <summary>
         /// Get entire StoreHouse By product Id for a company
@@ -48,10 +50,11 @@ namespace ApiTesterV01.Controllers
         /// <param name="companyId"></param>
         /// <returns></returns>
         [HttpGet("ByProduct/{productId}, {companyId}")]
-        public async Task<IActionResult> GetByProductAsync(int productId , int companyId)
+        public async Task<IActionResult> GetByProductAsync(int productId, int companyId)
         {
-            var sHouses = await _storeHouseServices.GetByProductIdAsync(productId , companyId);
-            return Ok(sHouses);
+            var sHouses = await _storeHouseServices.GetByProductIdAsync(productId, companyId);
+            if (sHouses.Count() >= 1) return Ok(sHouses);
+            return Ok();
         }
         /// <summary>
         /// Get entire StoreHouse By CompanyId
@@ -61,8 +64,9 @@ namespace ApiTesterV01.Controllers
         [HttpGet("ByCompany/{companyId}")]
         public async Task<IActionResult> GetByCompanyAsync(int companyId)
         {
-            var sHouse = await _storeHouseServices.GetByCompanyIdAsync( companyId);
-            return Ok(sHouse);
+            var sHouse = await _storeHouseServices.GetByCompanyIdAsync(companyId);
+            if (sHouse != null) return Ok(sHouse);
+            return Ok();
         }
         #endregion
 

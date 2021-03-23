@@ -22,31 +22,36 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             var orders = await _orderServices.GetAllAsync();
-            return Ok(orders);
+           if (orders.Count() >= 1 ) return Ok(orders);
+            return Ok();
         }
         [HttpGet("ByCompany/{companyId}")]
         public async Task<IActionResult> GetByCompanyAsync(int companyId)
         {
             var orders = await _orderServices.GetOrderByCompanyIdAsync(companyId);
-            return Ok(orders);
+            if (orders.Count () >= 1) return Ok(orders);
+            return Ok();
         }
         [HttpGet("ByCustomer/{customerId}")]
         public async Task<IActionResult> GetByCustomerAsync(int customerId)
         {
             var orders = await _orderServices.GetOrderByCustomerIdAsync(customerId);
-            return Ok(orders);
+            if (orders.Count() >= 1) return Ok(orders);
+            return Ok();
         }
         [HttpGet("ByRegDate/{startDate} , {endDate}")]
         public async Task<IActionResult> GetByRegDateAsync(string startDate, string endDate)
         {
             var orders = await _orderServices.GetOrderByRegDateAsync(startDate, endDate);
-            return Ok(orders);
+            if (orders.Count() >= 1) return Ok(orders);
+            return Ok();
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var order = await _orderServices.GetOrderByIdAsync(id);
-            return Ok(order);
+            if (order != null) return Ok(order);
+            return Ok();
         }
 
         #endregion

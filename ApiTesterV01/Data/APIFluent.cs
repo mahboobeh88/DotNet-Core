@@ -179,6 +179,13 @@ namespace ApiTesterV01.Data
             builder.HasMany(c => c.Companies).WithOne(o => o.CompanyOwner)
                 .HasForeignKey(o => o.CompanyOwnerId)
                 .OnDelete(DeleteBehavior.ClientNoAction);
+            builder.HasOne(o => o.User)
+                        .WithOne(p => p.companyOwner)
+                        .HasForeignKey<CompanyOwner>(o => o.UserId)
+                        .OnDelete(DeleteBehavior.ClientNoAction);
+
+
+
         }
 
     }
@@ -195,13 +202,15 @@ namespace ApiTesterV01.Data
                 .IsRequired()
                 .HasColumnType("nvarchar(150)");
             builder.Property(u => u.PasswordSalt)
-               .HasColumnType("nvarchar(150)");
+               .HasColumnType("uniqueidentifier");
             builder.Property(u => u.Status)
                 .HasColumnType("smallint")
                 .HasDefaultValue(0);
             builder.Property(u => u.IsActive)
                 .HasColumnType("bit")
                 .HasDefaultValue(0);
+           
+
         }
     }
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
@@ -227,6 +236,11 @@ namespace ApiTesterV01.Data
                 .HasDefaultValueSql("GetDate()");
             builder.Property(c => c.CreditCardNumber).HasColumnType("nvarchar(30)");
             builder.Property(c => c.Address).HasColumnType("nvarchar(150)");
+            builder.HasOne(o => o.User)
+                       .WithOne(p => p.customer)
+                       .HasForeignKey<Customer>(o => o.UserId)
+                       .OnDelete(DeleteBehavior.ClientNoAction);
+
         }
     }
 

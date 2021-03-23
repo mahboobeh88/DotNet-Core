@@ -16,6 +16,6 @@ namespace ApiTesterV01.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool IsActive { get; set; }
-        public Int16 Status { get; set; }
+        public short Status { get; set; }
     }
 }
