@@ -13,7 +13,8 @@ namespace ApiTesterV01.Models
         [Required]
         public long ProductId { get; set; }
         public int FirstInventory { get; set; }
-        [StringLength(10)]
+        [MinLength(10)]
+        [MaxLength(10)]
         public string InventoryStartDateTime { get; set; }
         [StringLength(10)]
         public string InventoryEndDateTime { get; set; }

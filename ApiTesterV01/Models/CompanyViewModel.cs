@@ -19,7 +19,8 @@ namespace ApiTesterV01.Models
         public string Address { get; set; }
         [MaxLength(50)]
         public string PhoneNumber { get; set; }
-        [StringLength(10)]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string RegisterDateTime { get; set; }
         public short Status { get; set; }
         [Required]

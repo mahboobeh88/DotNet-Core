@@ -17,9 +17,10 @@ namespace ApiTesterV01.Models
         public float? Percent { get; set; }
 
         public float? Price { get; set; }
+        [MinLength(10)]
         [MaxLength(10)]
-        
         public string? ShamsiStartDate { get; set; }
+        [MinLength(10)]
         [MaxLength(10)]
         public string? ShamsiEndDate { get; set; }
 

@@ -17,11 +17,12 @@ namespace ApiTesterV01.Models
         public decimal TotalPrice { get; set; }
         public float TotalDiscount { get; set; }
         public short Status { get; set; }
-        [StringLength(10)]
+        [MinLength(10)]
+        [MaxLength(10)]
         public string RegisterDateTime { get; set; }
         [MaxLength(150)]
         public string DeliveredAddress { get; set; }
-        [MaxLength(11)]
+        [RegularExpression(@"^([0-9]{10})$")]
         public string Mobile { get; set; }
        
         public long PaymentId { get; set; }

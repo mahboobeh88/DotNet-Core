@@ -39,7 +39,7 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var category = await _categoryServices.GetCategoryAsync(id);
-           if (category != null) return Ok(category);
+            if (category != null) return Ok(category);
             return Ok();
         }
         /// <summary>
@@ -67,8 +67,12 @@ namespace ApiTesterV01.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CategoryViewModel model)
         {
-            await _categoryServices.AddNewAsync(model);
-            return Ok();
+            if (ModelState.IsValid)
+            {
+                await _categoryServices.AddNewAsync(model);
+                return Ok();
+            }
+            return BadRequest(ModelState);
         }
         #endregion
 

@@ -40,7 +40,7 @@ namespace ApiTesterV01.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var city = await _cityServices.GetCityAsync(id);
-           if (city != null) return Ok(city);
+            if (city != null) return Ok(city);
             return Ok();
         }
         #endregion
@@ -55,8 +55,12 @@ namespace ApiTesterV01.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CityViewModel model)
         {
-            await _cityServices.AddNewAsync(model);
-            return Ok();
+            if (ModelState.IsValid)
+            {
+                await _cityServices.AddNewAsync(model);
+                return Ok();
+            }
+            return BadRequest(ModelState);
         }
         #endregion
 
@@ -72,6 +76,7 @@ namespace ApiTesterV01.Controllers
         {
             await _cityServices.UpdateCityAsync(model);
             return Ok();
+
         }
         #endregion
 
@@ -83,7 +88,7 @@ namespace ApiTesterV01.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id )
+        public async Task<IActionResult> Delete(int id)
         {
             await _cityServices.DeleteCityAsync(id);
             return Ok();

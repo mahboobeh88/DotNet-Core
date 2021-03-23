@@ -15,11 +15,14 @@ namespace ApiTesterV01.Models
         [MaxLength(50)]
         public string LastName { get; set; }
         [Required]
-        [MaxLength(13)]
-        public string NationalId { get; set; }
         [MaxLength(11)]
+        [MinLength(10)]
+        public string NationalId { get; set; }
+        [RegularExpression(@"^(\+98|0)?9\d{9}$")]
         public string MobileNo { get; set; }
         [Required]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string BirthDate { get; set; }
         public short Status { get; set; }
         [Required]

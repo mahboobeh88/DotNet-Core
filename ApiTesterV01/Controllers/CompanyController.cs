@@ -97,6 +97,19 @@ namespace ApiTesterV01.Controllers
             return Ok();
         }
         #endregion
+        #region Put
+        /// <summary>
+        /// Update a companyInfo By Id
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<IActionResult> Put(CompanyViewModel model)
+        {
+            await _companyServices.UpdateCompanyInfoByIdAsync(model);
+            return Ok();
+        }
+        #endregion
 
         #region Delete
         /// <summary>

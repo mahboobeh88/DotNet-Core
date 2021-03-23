@@ -15,18 +15,21 @@ namespace ApiTesterV01.Models
         [MaxLength(50)]
         public string LastName { get; set; }
         [Required]
-        [MaxLength(13)]
+        [MaxLength(11)]
+        [MinLength(10)]
         public string NationalId { get; set; }
-        [StringLength(11)]
+        [RegularExpression(@"^(\+98|0)?9\d{9}$")]
         public string Mobile { get; set; }
         [MaxLength(150)]
         public string Address { get; set; }
-        [StringLength(10)]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string BirthDate { get; set; }
         public short Status { get; set; }
         [MaxLength(30)]
         public string CreditCardNumber { get; set; }
-        [StringLength(10)]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string RegisterdateTime { get; set; }
         [Required]
         public Guid UserId { get; set; }

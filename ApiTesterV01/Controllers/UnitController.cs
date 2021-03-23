@@ -56,8 +56,8 @@ namespace ApiTesterV01.Controllers
         [HttpGet("ByProduct/{productId}")]
         public async Task<IActionResult> GetByProductIdAsync(int productId)
         {
-            var units = await _unitServices.GetCategoryByProductIdAsync(productId);
-            if (units.Count() >= 1) return Ok(units);
+            var unit = await _unitServices.GetCategoryByProductIdAsync(productId);
+            if (unit != null) return Ok(unit);
             return Ok();
         }
         #endregion
