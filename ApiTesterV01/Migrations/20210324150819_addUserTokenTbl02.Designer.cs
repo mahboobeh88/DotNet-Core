@@ -4,14 +4,16 @@ using ApiTesterV01.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiTesterV01.Migrations
 {
     [DbContext(typeof(APITesterDBContext))]
-    partial class APITesterDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210324150819_addUserTokenTbl02")]
+    partial class addUserTokenTbl02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -209,7 +209,7 @@ namespace ApiTesterV01.Data
             builder.Property(u => u.IsActive)
                 .HasColumnType("bit")
                 .HasDefaultValue(0);
-           
+
 
         }
     }
@@ -378,40 +378,63 @@ namespace ApiTesterV01.Data
                                  .OnDelete(DeleteBehavior.ClientNoAction);
         }
     }
-}
-public class StoreHouseConfiguration : IEntityTypeConfiguration<StoreHouse>
-{
-    public void Configure(EntityTypeBuilder<StoreHouse> builder)
+    public class StoreHouseConfiguration : IEntityTypeConfiguration<StoreHouse>
     {
-        builder.HasKey(sh => sh.Id);
-        builder.Property(sh => sh.Id).UseIdentityColumn();
-        builder.Property(sh => sh.ProductId)
-            .IsRequired()
-            .HasColumnType("bigint");
-        builder.Property(sh => sh.FirstInventory)
-            .IsRequired()
-            .HasColumnType("decimal(19,1)");
-        builder.Property(sh => sh.InventoryStartDateTime)
-            .IsRequired()
-            .HasColumnType("datetime")
-            .HasDefaultValueSql("GetDate()");
-        builder.Property(sh => sh.InventoryEndDateTime).HasColumnType("datetime");
-        builder.Property(sh => sh.UnitId).HasColumnType("smallint");
-        builder.Property(sh => sh.ComapnyId)
-            .IsRequired()
-            .HasColumnType("bigint");
-        builder.Property(sh => sh.Status)
-            .HasColumnType("smallint")
-            .HasDefaultValue(0);
-        builder.HasOne(c => c.Product).WithMany(b => b.StoreHouses)
-              .HasForeignKey(c => c.ProductId)
-              .OnDelete(DeleteBehavior.ClientNoAction);
-        //builder.HasOne(c => c.Company).WithOne(b => b.StoreHouse)
-        //    .HasForeignKey<StoreHouse>(s => s.ComapnyId)
-        //    .OnDelete(DeleteBehavior.ClientNoAction);
+        public void Configure(EntityTypeBuilder<StoreHouse> builder)
+        {
+            builder.HasKey(sh => sh.Id);
+            builder.Property(sh => sh.Id).UseIdentityColumn();
+            builder.Property(sh => sh.ProductId)
+                .IsRequired()
+                .HasColumnType("bigint");
+            builder.Property(sh => sh.FirstInventory)
+                .IsRequired()
+                .HasColumnType("decimal(19,1)");
+            builder.Property(sh => sh.InventoryStartDateTime)
+                .IsRequired()
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("GetDate()");
+            builder.Property(sh => sh.InventoryEndDateTime).HasColumnType("datetime");
+            builder.Property(sh => sh.UnitId).HasColumnType("smallint");
+            builder.Property(sh => sh.ComapnyId)
+                .IsRequired()
+                .HasColumnType("bigint");
+            builder.Property(sh => sh.Status)
+                .HasColumnType("smallint")
+                .HasDefaultValue(0);
+            builder.HasOne(c => c.Product).WithMany(b => b.StoreHouses)
+                  .HasForeignKey(c => c.ProductId)
+                  .OnDelete(DeleteBehavior.ClientNoAction);
+            //builder.HasOne(c => c.Company).WithOne(b => b.StoreHouse)
+            //    .HasForeignKey<StoreHouse>(s => s.ComapnyId)
+            //    .OnDelete(DeleteBehavior.ClientNoAction);
 
 
+        }
+    }
+    public class UserTokenConfiguration : IEntityTypeConfiguration<UserToken>
+    {
+        public void Configure(EntityTypeBuilder<UserToken> builder)
+        {
+            builder.HasKey(u => u.Id);
+            builder.Property(u => u.Id)
+                .HasColumnType("int")
+                .UseIdentityColumn();
+            builder.Property(u => u.UserId)
+                .IsRequired()
+                .HasColumnType("uniqueidentifier");
+            builder.Property(u => u.RefreshToken)
+                .IsRequired()
+                .HasColumnType("varchar(64)");
+            builder.Property(u => u.GenerationDate)
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("GetDate()");
+            builder.Property(u => u.IsValid)
+                 .HasColumnType("bit")
+                 .HasDefaultValue(0);
+        }
     }
 }
+
 
 

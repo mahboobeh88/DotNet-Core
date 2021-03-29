@@ -4,14 +4,16 @@ using ApiTesterV01.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiTesterV01.Migrations
 {
     [DbContext(typeof(APITesterDBContext))]
-    partial class APITesterDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210324150700_addUserTokenTbl")]
+    partial class addUserTokenTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -676,39 +678,6 @@ namespace ApiTesterV01.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("ApiTesterV01.Entities.UserToken", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("GenerationDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("GetDate()");
-
-                    b.Property<bool>("IsValid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("RefreshToken")
-                        .IsRequired()
-                        .HasColumnType("varchar(64)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserToken");
-                });
-
             modelBuilder.Entity("ApiTesterV01.Entities.Company", b =>
                 {
                     b.HasOne("ApiTesterV01.Entities.City", "City")
@@ -949,17 +918,6 @@ namespace ApiTesterV01.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ApiTesterV01.Entities.UserToken", b =>
-                {
-                    b.HasOne("ApiTesterV01.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ApiTesterV01.Entities.Category", b =>

@@ -61,7 +61,7 @@ namespace ApiTesterV01.Controllers
 
             var user = await _userServices.GetUserByUserNamePasswordAsync(userName.Trim() , password);
             if (user != null) return Ok(user);
-            return Ok();
+            return BadRequest("Invalid UserName Or Password!");
 
         }
         #endregion

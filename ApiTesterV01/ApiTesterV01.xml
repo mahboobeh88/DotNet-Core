@@ -116,6 +116,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiTesterV01.Controllers.CompanyController.Put(ApiTesterV01.Models.CompanyViewModel)">
+            <summary>
+            Update a companyInfo By Id
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiTesterV01.Controllers.CompanyController.DeleteByIdAsync(System.Int32)">
             <summary>
             Delete Company By CompanyId

@@ -118,6 +118,11 @@ namespace ApiTesterV01.Data
                  .ForMember(x => x.InventoryStartDateTime, opt => opt.MapFrom(x => x.InventoryStartDateTime.ToMiladi()))
                  .ForMember(x => x.InventoryEndDateTime, opt => { opt.PreCondition(x => x.InventoryEndDateTime != null); opt.MapFrom(x => (DateTime)x.InventoryEndDateTime.ToMiladi()); });
             #endregion
+
+            #region UserToken
+            CreateMap<UserToken, UserTokenViewModel>();
+            CreateMap<UserTokenViewModel, UserToken>();
+            #endregion
         }
 
     }

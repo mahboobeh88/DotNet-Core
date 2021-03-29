@@ -23,25 +23,25 @@ namespace ApiTesterV01.Services
 
         public async Task<IEnumerable<PageViewModel>> GetAllAsync()
         {
-            var pages = await _context.Pages.AsNoTracking().ToListAsync();
+            var pages = await _context.Page.AsNoTracking().ToListAsync();
             var pageModel = _mapper.Map<IEnumerable<PageViewModel>>(pages);
             return pageModel;
         }
         public async Task<IEnumerable<PageViewModel>> GetByCompanyIdAsync(int companyId)
         {
-            var pages = await _context.Pages.Where(p => p.CompanyId == companyId).AsNoTracking().ToListAsync();
+            var pages = await _context.Page.Where(p => p.CompanyId == companyId).AsNoTracking().ToListAsync();
             var pageModel = _mapper.Map<IEnumerable<PageViewModel>>(pages);
             return pageModel;
         }
         public async Task<IEnumerable<PageViewModel>> GetByPageTypeAsync(int type)
         {
-            var pages = await _context.Pages.Where(p => p.PageType == (PageType)type).AsNoTracking().ToListAsync();
+            var pages = await _context.Page.Where(p => p.PageType == (PageType)type).AsNoTracking().ToListAsync();
             var pageModel = _mapper.Map<IEnumerable<PageViewModel>>(pages);
             return pageModel;
         }
         public async Task<PageViewModel> GetByIdAsync(int id)
         {
-            var page = await _context.Pages.Where(p => p.Id == id).AsNoTracking().SingleOrDefaultAsync();
+            var page = await _context.Page.Where(p => p.Id == id).AsNoTracking().SingleOrDefaultAsync();
             var pageModel = _mapper.Map<PageViewModel>(page);
             return pageModel;
         }
@@ -59,7 +59,7 @@ namespace ApiTesterV01.Services
         public async Task UpdatePageByIdAsync(PageViewModel model)
         {
 
-            var page = await _context.Pages.Where(p => p.Id == model.Id).SingleOrDefaultAsync();
+            var page = await _context.Page.Where(p => p.Id == model.Id).SingleOrDefaultAsync();
             if (page != null)
             {
                 page.CompanyId = model.CompanyId;
@@ -70,7 +70,7 @@ namespace ApiTesterV01.Services
         }
         public async Task DeletePageByIdAsync(int id)
         {
-            var page = await _context.Pages.Where(p => p.Id == id).SingleOrDefaultAsync();
+            var page = await _context.Page.Where(p => p.Id == id).SingleOrDefaultAsync();
             if (page != null)
             {
                 _context.Remove(page);
@@ -79,7 +79,7 @@ namespace ApiTesterV01.Services
         }
         public async Task DeletePagesByCompanyAsync(int companyId)
         {
-            var pages = await _context.Pages.Where(p => p.CompanyId == companyId).ToListAsync();
+            var pages = await _context.Page.Where(p => p.CompanyId == companyId).ToListAsync();
             if (pages.Count > 0)
             {
                 _context.RemoveRange(pages);

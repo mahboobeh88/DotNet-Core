@@ -47,7 +47,6 @@ namespace ApiTesterV01.Services
         {
             string hashPass = _encryption.Encription(password);
             var user = await _context.User.Where(u => u.UserName.Trim() == userName.Trim()  && u.Password.Trim() == hashPass + u.PasswordSalt.ToString()).AsNoTracking().SingleOrDefaultAsync();
-            
             var userModel = _mapper.Map<UserViewModel>(user);
             return userModel;
            

@@ -14,6 +14,7 @@ namespace ApiTesterV01.Data
         {
 
         }
+        #region Tabels
         public DbSet<Category> Category { get; set; }
         public DbSet<City> City { get; set; }
         public DbSet<User> User { get; set; }
@@ -27,23 +28,15 @@ namespace ApiTesterV01.Data
         public DbSet<Media> Media { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
-        public DbSet<Page> Pages { get; set; }
+        public DbSet<Page> Page { get; set; }
         public DbSet<Payment> Payment { get; set; }
         public DbSet<SectionPage> SectionPage { get; set; }
         public DbSet<StoreHouse> StoreHouse { get; set; }
         public DbSet<Unit> Unit { get; set; }
-
-        //public DateTime ConvertShamsiToMiladi(string shamsidate)  => throw new NotSupportedException();
-
+        public DbSet<UserToken> UserToken { get; set; }
+        #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-           
-
-
-            //modelBuilder.HasDbFunction(typeof(APITesterDBContext)
-            //  .GetMethod(nameof(ConvertShamsiToMiladi), new[] { typeof(DateTime) })).HasName("ShamsiToMiladi");
-
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CityConfiguration());
             modelBuilder.ApplyConfiguration(new CompanyConfiguration());
@@ -62,8 +55,7 @@ namespace ApiTesterV01.Data
             modelBuilder.ApplyConfiguration(new UnitConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new StoreHouseConfiguration());
-
-
+            modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
         }
     }
 }

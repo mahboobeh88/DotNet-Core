@@ -1,18 +1,21 @@
-using ApiTesterV01.Common;
+﻿using ApiTesterV01.Common;
 using ApiTesterV01.Data;
 using ApiTesterV01.ISevices;
 using ApiTesterV01.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace ApiTesterV01
 {
@@ -59,11 +62,44 @@ namespace ApiTesterV01
             services.AddScoped(typeof(IPageServices), typeof(PageServices));
             services.AddScoped(typeof(ISectionPageServices) , typeof(SectionPageServices));
             services.AddScoped(typeof(IStoreHouseServices) , typeof(StoreHouseServices));
+            services.AddScoped(typeof(IUserTokenServices), typeof(UserTokenServices));
+            services.AddScoped(typeof(IAuthServices), typeof(AuthServices));
             #endregion
 
             #region Utilities
             services.AddSingleton(typeof(EncryptionUtility));
+            services.AddSingleton(typeof(AuthUtility));
             #endregion
+
+
+            #region Token
+            var secretKey = "THIS OK USED AB OMID DNA AERIFY JWT OOKENS, REPLACE IT WITH YOUN OWN SECRET, IT CAN BE ANY STRING"; //Configuration.GetValue<string>("TokenKey");
+            var tokenTimeOut = 1; // Configuration.GetValue<int>("TokenTimeOut");
+
+            var key = Encoding.UTF8.GetBytes(secretKey);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //برای کنترل زمان توکن
+                    ClockSkew = TimeSpan.FromMinutes(tokenTimeOut),
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            #endregion
+
 
             services.AddControllers();
 
@@ -103,7 +139,7 @@ namespace ApiTesterV01
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
