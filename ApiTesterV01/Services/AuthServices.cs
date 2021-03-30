@@ -27,7 +27,7 @@ namespace ApiTesterV01.Services
         {
             var user = await _userServices.GetUserByUserNamePasswordAsync(model.UserName, model.Password);
             if (user == null) throw null;
-            var result = await CreateNewToken(user);
+            var result = CreateNewToken(user);
             return result;
         }
 

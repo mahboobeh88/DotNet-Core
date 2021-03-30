@@ -19,19 +19,16 @@ namespace ApiTesterV01.Common
         }
         public string GenerateNewToken(Guid userGuid)
         {
-            string tokenKey = _configuration.GetValue<string>("TokenKey");
-            int tokenTimeOut = _configuration.GetValue<int>("TokenTimeOut");
-
-
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(tokenKey);
+            var key = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("TokenKey"));
+            var tokenTimeOut = _configuration.GetValue<int>("TokenTimeOut");
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                        new Claim("user", userGuid.ToString()),
-                        new Claim("TimeOut-Minute", tokenTimeOut.ToString()),
+                        new Claim("userGuid", userGuid.ToString()),
+                    //  new Claim("TimeOut-Minute", tokenTimeOut.ToString()),
                 }),
 
                 Expires = DateTime.UtcNow.AddMinutes(tokenTimeOut),
