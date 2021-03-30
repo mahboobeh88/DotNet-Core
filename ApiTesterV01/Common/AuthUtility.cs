@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,8 +12,17 @@ namespace ApiTesterV01.Common
 {
     public class AuthUtility
     {
-        public string GenerateNewToken(Guid userGuid, string tokenKey , int tokenTimeOut)
+        private IConfiguration _configuration;
+        public AuthUtility(IConfiguration configuration)
         {
+            _configuration = configuration;
+        }
+        public string GenerateNewToken(Guid userGuid)
+        {
+            string tokenKey = _configuration.GetValue<string>("TokenKey");
+            int tokenTimeOut = _configuration.GetValue<int>("TokenTimeOut");
+
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(tokenKey);
 

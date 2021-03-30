@@ -33,11 +33,12 @@ namespace ApiTesterV01.Controllers
         }
 
 
-        [HttpPost("{token},{refreshToken}")]
-        public async Task<IActionResult> PostNewToken(string token, string refreshToken)
+        [HttpPost("{refreshToken}")]
+        public async Task<IActionResult> PostNewToken( string refreshToken)
         {
+            string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiM2ZhODVmNjQtNTcxNy00NTYyLWIzZmMtMmM5NjNmNjZhZmE2IiwiVGltZU91dC1NaW51dGUiOiIyIiwibmJmIjoxNjE3MDkwMTc1LCJleHAiOjE2MTcwOTAyOTUsImlhdCI6MTYxNzA5MDE3NX0.gdi0QXtPS6nz8fX3ydbeutYf61zAi5VV4QLHEsj0-T0";
             Guid userId;
-            if (token == null || token.Trim() == string.Empty)
+            if (token != null && token.Trim() != string.Empty)
             {
                 if (!Guid.TryParse(_authUtility.GetClaim(token, "user"), out userId))
                     return BadRequest("Token Is Not Valid");
@@ -54,7 +55,7 @@ namespace ApiTesterV01.Controllers
             }
             catch (ExternalException ex)
             {
-                return BadRequest($"Error {ex.ErrorCode.ToString()} : {ex.Message}");
+                return BadRequest($"Error {ex.ErrorCode} : {ex.Message}");
             }
             catch (Exception)
             {
