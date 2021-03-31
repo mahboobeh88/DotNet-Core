@@ -13,7 +13,9 @@ namespace ApiTesterV01.Entities
         public Guid PasswordSalt { get; set; }
         public bool IsActive { get; set; }
         public short Status { get; set; }
-        public CompanyOwner companyOwner { get; set; }
-        public Customer customer { get; set; }
+        public virtual CompanyOwner companyOwner { get; set; }
+        public virtual Customer customer { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
+
     }
 }

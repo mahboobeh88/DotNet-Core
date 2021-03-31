@@ -34,7 +34,13 @@ namespace ApiTesterV01.Data
         public DbSet<StoreHouse> StoreHouse { get; set; }
         public DbSet<Unit> Unit { get; set; }
         public DbSet<UserToken> UserToken { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<RolePermission> RolePermission { get; set; }
+        public DbSet<PermissionGroup> PermissionGroups { get; set; }
         #endregion
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
@@ -56,6 +62,10 @@ namespace ApiTesterV01.Data
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new StoreHouseConfiguration());
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new PermissionConfiguration());
+            modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());
+            modelBuilder.ApplyConfiguration(new PermissionGroupConfiguration());
         }
     }
 }

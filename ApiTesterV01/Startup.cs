@@ -65,6 +65,10 @@ namespace ApiTesterV01
             services.AddScoped(typeof(IStoreHouseServices) , typeof(StoreHouseServices));
             services.AddScoped(typeof(IUserTokenServices), typeof(UserTokenServices));
             services.AddScoped(typeof(IAuthServices), typeof(AuthServices));
+            services.AddScoped(typeof(IPermissionGroupServices), typeof(PermissionGroupServices));
+            services.AddScoped(typeof(IPermissionServices), typeof(PermissionServices));
+            services.AddScoped(typeof(IRoleServices), typeof(RoleServices));
+            services.AddScoped(typeof(IRolePermissionServices), typeof(RolePermissionServices));
             #endregion
 
             #region Utilities

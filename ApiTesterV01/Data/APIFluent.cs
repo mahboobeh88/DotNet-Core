@@ -434,6 +434,75 @@ namespace ApiTesterV01.Data
                  .HasDefaultValue(0);
         }
     }
+
+    public class RoleConfiguration : IEntityTypeConfiguration<Role>
+    {
+        public void Configure(EntityTypeBuilder<Role> builder)
+        {
+            builder.HasKey(r => r.Id);
+            builder.Property(r => r.Id)
+                .HasColumnType("int")
+                .UseIdentityColumn();
+            builder.Property(u => u.Name)
+                .IsRequired()
+                .HasColumnType("nvarchar(64)");
+        }
+    }
+
+    public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
+    {
+        public void Configure(EntityTypeBuilder<Permission> builder)
+        {
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id)
+                .HasColumnType("int")
+                .UseIdentityColumn();
+            builder.Property(p => p.Title)
+                .IsRequired()
+                .HasColumnType("nvarchar(64)");
+            builder.Property(p => p.AreaName)
+                .HasColumnType("nvarchar(64)");
+            builder.Property(p => p.ControllerName)
+                .HasColumnType("nvarchar(64)");
+            builder.Property(p => p.ActionName)
+                .HasColumnType("nvarchar(64)");
+            builder.Property(p => p.ShowInMenu)
+                .HasColumnType("bit");
+            builder.Property(p => p.ActionType)
+              .HasColumnType("nvarchar(64)");
+        }
+    }
+    public class RolePermissionConfiguration : IEntityTypeConfiguration<RolePermission>
+    {
+        public void Configure(EntityTypeBuilder<RolePermission> builder)
+        {
+            builder.HasKey(rp => rp.Id);
+            builder.Property(rp => rp.Id)
+                .HasColumnType("int")
+                .UseIdentityColumn();
+            builder.Property(rp => rp.PermissionId)
+                .IsRequired()
+                .HasColumnType("int");
+            builder.Property(rp => rp.RoleId)
+                .IsRequired()
+                .HasColumnType("int");
+        }
+    }
+    public class PermissionGroupConfiguration : IEntityTypeConfiguration<PermissionGroup>
+    {
+        public void Configure(EntityTypeBuilder<PermissionGroup> builder)
+        {
+            builder.HasKey(pg => pg.Id);
+            builder.Property(pg => pg.Id)
+                .HasColumnType("int")
+                .UseIdentityColumn();
+            builder.Property(pg => pg.Title)
+                .IsRequired()
+                .HasColumnType("nvarchar(64)");
+            builder.Property(pg => pg.ShowInMenu)
+                .HasColumnType("bit");
+        }
+    }
 }
 
 

@@ -27,4 +27,11 @@ namespace ApiTesterV01.Entities
         Video =2,
         Audio =3
     }
+    public enum ActionType
+    {
+        HttpGet =1 , 
+        HttpPost=2, 
+        HttpDelete=3, 
+        HttpPut=4
+    }
 }

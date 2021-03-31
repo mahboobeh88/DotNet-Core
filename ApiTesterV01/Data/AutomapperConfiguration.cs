@@ -123,6 +123,27 @@ namespace ApiTesterV01.Data
             CreateMap<UserToken, UserTokenViewModel>();
             CreateMap<UserTokenViewModel, UserToken>();
             #endregion
+
+            #region Roles
+            CreateMap<Role, RoleViewModel>();
+            CreateMap<RoleViewModel, Role>();
+            #endregion
+
+            #region PermissionGroup
+            CreateMap<PermissionGroup, PermissionGroupViewModel>();
+            CreateMap<PermissionGroupViewModel, PermissionGroup>();
+            #endregion
+
+            #region Permission
+            CreateMap<Permission, PermissionViewModel>();
+            CreateMap<PermissionViewModel, Permission>()
+              .ForMember(x => x.AreaName, opt => { opt.PreCondition(x => x.AreaName != string.Empty); opt.MapFrom(x => x.AreaName); });
+            #endregion
+
+            #region RolePermission
+            CreateMap<RolePermission, RolePermissionViewModel>();
+            CreateMap<RolePermissionViewModel, RolePermission>();
+            #endregion
         }
 
     }
