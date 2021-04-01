@@ -21,35 +21,44 @@ namespace ApiTesterV01.Services
             _context = context;
             _mapper = mapper;
         }
-        public async Task<ICollection<object>> GetAllAsync()
+        public async Task<ICollection<RolePermissionInfo>> GetAllAsync()
         {
-            var rolePermission = await _context.RolePermission
-                .Join(_context.Permission, rp => rp.PermissionId, p => p.Id, (rp, p) => new
-                { rp, p })
-                .Join(_context.PermissionGroups, rp => rp.p.PermissionGroupId, pg => pg.Id, (rp, pg) => new { pg, rp })
-                .Join(_context.Role, rp => rp.rp.rp.RoleId, r => r.Id, (rp, r) => new
-                {
-                    Title = rp.rp.p.Title,
-                    Rout = $" {rp.rp.p.AreaName} / {rp.rp.p.ControllerName} / {rp.rp.p.ActionName} ",
-                    ActionType = rp.rp.p.ActionType,
-                    RoleName = r.Name,
-                    PermissionGroup = rp.pg.Title
-                })
-                .AsNoTracking().ToListAsync();
-            return (ICollection<object>)rolePermission;
+            try
+            {
+                var rolePermission =  await _context.RolePermission
+               .Join(_context.Permission, rp => rp.PermissionId, p => p.Id, (rp, p) => new
+               { rp, p })
+               .Join(_context.PermissionGroups, rp => rp.p.PermissionGroupId, pg => pg.Id, (rp, pg) => new { pg, rp })
+               .Join(_context.Role, rp => rp.rp.rp.RoleId, r => r.Id, (rp, r) => new RolePermissionInfo
+               {
+                   Title = rp.rp.p.Title,
+                   Route = $"{rp.rp.p.AreaName}/{rp.rp.p.ControllerName}/{rp.rp.p.ActionName} ",
+                   ActionType = rp.rp.p.ActionType.ToString(),
+                   RoleName = r.Name,
+                   PermissionGroup = rp.pg.Title
+               })
+               .AsNoTracking().ToListAsync();
+                return rolePermission;
+            }
+            catch (Exception ex)
+            {
+                var xx = ex;
+                throw;
+            }
+           
         }
-        public async Task<object> GetRolePermissionByIdAsync(int rolePermissionId)
+        public async Task<RolePermissionInfo> GetRolePermissionByIdAsync(int rolePermissionId)
         {
             var rolePermission = await _context.RolePermission
                .Where(i => i.Id == rolePermissionId)
               .Join(_context.Permission, rp => rp.PermissionId, p => p.Id, (rp, p) => new
               { rp, p })
               .Join(_context.PermissionGroups, rp => rp.p.PermissionGroupId, pg => pg.Id, (rp, pg) => new { pg, rp })
-              .Join(_context.Role, rp => rp.rp.rp.RoleId, r => r.Id, (rp, r) => new
+              .Join(_context.Role, rp => rp.rp.rp.RoleId, r => r.Id, (rp, r) => new RolePermissionInfo
               {
                   Title = rp.rp.p.Title,
-                  Rout = $" {rp.rp.p.AreaName} / {rp.rp.p.ControllerName} / {rp.rp.p.ActionName} ",
-                  ActionType = rp.rp.p.ActionType,
+                  Route = $"{rp.rp.p.AreaName}/{rp.rp.p.ControllerName}/{rp.rp.p.ActionName} ",
+                  ActionType = rp.rp.p.ActionType.ToString(),
                   RoleName = r.Name,
                   PermissionGroup = rp.pg.Title
               })

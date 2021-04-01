@@ -15,4 +15,12 @@ namespace ApiTesterV01.Models
         [Required]
         public int PermissionId { get; set; }
     }
+    public class RolePermissionInfo
+    {
+        public string Title { get; set; }
+        public string Route { get; set; }
+        public string ActionType { get; set; }
+        public string RoleName { get; set; }
+        public string PermissionGroup { get; set; }
+    }
 }

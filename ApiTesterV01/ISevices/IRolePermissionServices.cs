@@ -8,8 +8,8 @@ namespace ApiTesterV01.ISevices
 {
     public interface IRolePermissionServices
     {
-        Task<ICollection<object>> GetAllAsync();
-        Task<object> GetRolePermissionByIdAsync(int rolePermissionId);
+        Task<ICollection<RolePermissionInfo>> GetAllAsync();
+        Task<RolePermissionInfo> GetRolePermissionByIdAsync(int rolePermissionId);
         Task AddNewAsync(RolePermissionViewModel model);
          Task UpdateRolePermissionAsync(RolePermissionViewModel model);
         Task DeleteRolePermissionByIdAsync(int id);
