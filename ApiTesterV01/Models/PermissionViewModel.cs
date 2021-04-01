@@ -20,7 +20,7 @@ namespace ApiTesterV01.Models
         [Required, MaxLength(64)]
         public string ActionName { get; set; }
         [Required]
-        public ActionType ActionType { get; set; }
+        public string ActionType { get; set; }
         public bool ShowInMenu { get; set; }
         public int? PermissionGroupId { get; set; }
     }

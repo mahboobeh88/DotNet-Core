@@ -135,9 +135,11 @@ namespace ApiTesterV01.Data
             #endregion
 
             #region Permission
-            CreateMap<Permission, PermissionViewModel>();
+            CreateMap<Permission, PermissionViewModel>()
+                .ForMember(x => x.ActionType, opt => opt.MapFrom(x => (ActionType) x.ActionType));
             CreateMap<PermissionViewModel, Permission>()
-              .ForMember(x => x.AreaName, opt => { opt.PreCondition(x => x.AreaName != string.Empty); opt.MapFrom(x => x.AreaName); });
+              .ForMember(x => x.AreaName, opt => { opt.PreCondition(x => x.AreaName != string.Empty); opt.MapFrom(x => x.AreaName); })
+              .ForMember(x => x.ActionType, opt => opt.MapFrom(x => (ActionType)Enum.Parse(typeof(ActionType), x.ActionType)));
             #endregion
 
             #region RolePermission

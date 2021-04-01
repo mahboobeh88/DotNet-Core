@@ -469,7 +469,7 @@ namespace ApiTesterV01.Data
             builder.Property(p => p.ShowInMenu)
                 .HasColumnType("bit");
             builder.Property(p => p.ActionType)
-              .HasColumnType("nvarchar(64)");
+              .HasColumnType("smallint");
         }
     }
     public class RolePermissionConfiguration : IEntityTypeConfiguration<RolePermission>

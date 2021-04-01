@@ -49,7 +49,7 @@ namespace ApiTesterV01.Services
                 permission.ShowInMenu = model.ShowInMenu;
                 permission.AreaName = model.AreaName.Trim();
                 permission.ControllerName = model.ControllerName.Trim();
-                permission.ActionType = model.ActionType;
+                permission.ActionType = (ActionType)Enum.Parse(typeof(ActionType), model.ActionType);
                 permission.ActionName = model.ActionName.Trim();
                 await _context.SaveChangesAsync();
             }
