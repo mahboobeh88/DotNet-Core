@@ -1,6 +1,7 @@
 ﻿using ApiTesterV01.Common;
 using ApiTesterV01.Data;
 using ApiTesterV01.ISevices;
+using ApiTesterV01.MyFilters;
 using ApiTesterV01.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -106,7 +107,7 @@ namespace ApiTesterV01
             #endregion
 
 
-            services.AddControllers();
+            services.AddControllers(config => config.Filters.Add(new ActionFilters()));
 
             #region Swagger
             services.AddSwaggerGen(c =>

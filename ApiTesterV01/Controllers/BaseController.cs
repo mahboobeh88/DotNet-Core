@@ -8,8 +8,9 @@ namespace ApiTesterV01.Controllers
   
     [Route("api/[controller]")]
     [ApiController]
-  //  [Authorize]
+    [Authorize]
     public class BaseController : ControllerBase
     {
+       
     }
 }
