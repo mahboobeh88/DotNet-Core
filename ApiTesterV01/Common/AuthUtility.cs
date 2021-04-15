@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ApiTesterV01.Common
 {
@@ -20,23 +19,32 @@ namespace ApiTesterV01.Common
         public string GenerateNewToken(Guid userGuid)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("TokenKey"));
-            var tokenTimeOut = _configuration.GetValue<int>("TokenTimeOut");
+            var key = Encoding.UTF8.GetBytes("THIS OK USED AB OMID DNA AERIFY JWT OOKENS, REPLACE IT WITH YOUN OWN SECRET, IT CAN BE ANY STRING");
+            var tokenTimeOut = 5; // _configuration.GetValue<int>("TokenTimeOut");
 
-            var tokenDescriptor = new SecurityTokenDescriptor
+            try
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                        new Claim("userGuid", userGuid.ToString()),
-                    //  new Claim("TimeOut-Minute", tokenTimeOut.ToString()),
+                    Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("userGuid", userGuid.ToString()),
                 }),
 
-                Expires = DateTime.UtcNow.AddMinutes(tokenTimeOut),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
+                    Expires = DateTime.UtcNow.AddMinutes(tokenTimeOut),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                return tokenHandler.WriteToken(token);
+            }
+            catch (Exception ex)
+            {
+                var s = ex.Message;
+                throw;
+            }
+            
+   
         }
 
 

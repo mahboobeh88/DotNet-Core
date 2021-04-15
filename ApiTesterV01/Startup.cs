@@ -79,8 +79,10 @@ namespace ApiTesterV01
 
 
             #region Token
-            var secretKey = "THIS OK USED AB OMID DNA AERIFY JWT OOKENS, REPLACE IT WITH YOUN OWN SECRET, IT CAN BE ANY STRING"; //Configuration.GetValue<string>("TokenKey");
-            var tokenTimeOut = 1; // Configuration.GetValue<int>("TokenTimeOut");
+           // var secretKey = "THIS OK ABCD OL TEST AND AERIFY ABC OOKENS, REPLACE IT WITH YOUN OWN SECRET, IT CAN BE ANY STRING"; 
+            //var secretKey = "THIS OK ABCD OL TEST AND AERIFY ABC AAKENS, REPLACE IT WITH YOUN PLK SECRET, IT CAN BE ANY STRING";
+           var secretKey = "THIS OK USED AB OMID DNA AERIFY JWT OOKENS, REPLACE IT WITH YOUN OWN SECRET, IT CAN BE ANY STRING"; //Configuration.GetValue<string>("TokenKey");
+            var tokenTimeOut = 5; // Configuration.GetValue<int>("TokenTimeOut");
 
             var key = Encoding.UTF8.GetBytes(secretKey);
 
@@ -107,7 +109,7 @@ namespace ApiTesterV01
             #endregion
 
 
-            services.AddControllers(config => config.Filters.Add(new ActionFilters()));
+            services.AddControllers();
 
             #region Swagger
             services.AddSwaggerGen(c =>
@@ -158,7 +160,7 @@ namespace ApiTesterV01
                             Id = "Bearer"
                         }
                     },
-                    Array.Empty<string>()
+                    new string[] { }
                 }
                 });
                 #endregion
@@ -188,6 +190,6 @@ namespace ApiTesterV01
             {
                 endpoints.MapControllers();
             });
-        }
+}
     }
 }

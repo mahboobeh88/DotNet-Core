@@ -5,12 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiTesterV01.Controllers
 {
-  
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     [Authorize]
     public class BaseController : ControllerBase
     {
-       
+
     }
 }
